@@ -14,7 +14,7 @@ export const Logo = () => {
             <div className="bg-white rounded-full p-1">
                 <Image
                     src="/logo.svg"
-                    alt="Gamehub"
+                    alt="Ambient"
                     height="70"
                     width="70"
                 />
@@ -23,12 +23,6 @@ export const Logo = () => {
                 "flex flex-col items-center",
                 font.className,
             )}>
-                <p className="text-xl font-semibold">
-                    Ambient
-                </p>
-                <p className="text-sm text-muted-foreground">
-                    Let&apos;s play
-                </p>
             </div>
         </div>
     );
