@@ -4,7 +4,8 @@ export default authMiddleware({
 
   publicRoutes: [
     "/",
-    "/api/webhooks(.*)"
+    "/api/webhooks(.*)",
+    "/api/uploadthing",
 ]
 });
  
