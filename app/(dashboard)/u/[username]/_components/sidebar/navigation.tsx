@@ -8,7 +8,12 @@ import {
   MessageSquare,
   Users,
   File,
-  Video
+  BarChart,
+  Home,
+  BookOpen,
+  Video,
+  Box,
+  Camera
 } from "lucide-react";
 
 import { NavItem, NavItemSkeleton } from "./nav-item";
@@ -19,9 +24,19 @@ export const Navigation = () => {
 
   const routes = [
     {
-      label: "Stream",
+      label: "Main",
+      href: `/u/${user?.username}/main`,
+      icon: Home,
+    },
+    {
+      label: "Stream Manager",
       href: `/u/${user?.username}`,
       icon: Fullscreen,
+    },
+    {
+      label: "Analytics",
+      href: `/u/${user?.username}`,
+      icon: BarChart,
     },
     {
       label: "Keys",
@@ -34,9 +49,24 @@ export const Navigation = () => {
       icon: MessageSquare,
     },
     {
+      label: "Drops",
+      href: `/u/${user?.username}/community`,
+      icon: Box,
+    },
+    {
+      label: "Streaming Tools",
+      href: `/u/${user?.username}`,
+      icon: Camera,
+    },
+    {
       label: "Community",
       href: `/u/${user?.username}/community`,
       icon: Users,
+    },
+    {
+      label: "Docs",
+      href: `/u/${user?.username}`,
+      icon: BookOpen,
     },
   ];
 
