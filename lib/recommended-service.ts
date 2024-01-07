@@ -1,6 +1,5 @@
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
-import { resolve } from "path";
 
 export const getRecommended = async () => {
   let userId;
@@ -28,6 +27,15 @@ export const getRecommended = async () => {
               followedBy: {
                 some: {
                   followerId: userId,
+                },
+              },
+            },
+          },
+          {
+            NOT: {
+              blocking: {
+                some: {
+                  blockedId: userId,
                 },
               },
             },
