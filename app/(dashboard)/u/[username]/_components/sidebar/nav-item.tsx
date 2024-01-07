@@ -34,7 +34,10 @@ export const NavItem = ({
       )}
     >
       <Link href={href}>
-        <div className="flex items-center gap-x-4">
+      <div className={cn(
+          "flex items-center w-full gap-x-4",
+          collapsed && "justify-center",
+        )}>
           <Icon className={cn(
             "h-4 w-4",
             collapsed ? "mr-0" : "mr-2"
