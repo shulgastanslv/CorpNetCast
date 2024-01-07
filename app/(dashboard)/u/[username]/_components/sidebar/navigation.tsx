@@ -38,16 +38,6 @@ export const Navigation = () => {
       href: `/u/${user?.username}/community`,
       icon: Users,
     },
-    {
-      label: "Streaming Tools",
-      href: `/u/${user?.username}/StreamingTools`,
-      icon: Video,
-    },
-    {
-      label: "Docs",
-      href: `/u/${user?.username}/Docs`,
-      icon: File,
-    },
   ];
 
   if (!user?.username) {
