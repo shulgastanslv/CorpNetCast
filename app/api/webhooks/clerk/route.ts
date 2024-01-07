@@ -57,6 +57,11 @@ export async function POST(req: Request) {
         username: payload.data.username,
         imageUrl: payload.data.image_url,
         primary_email_address_id: payload.data.primary_email_address_id,
+        stream: {
+          create: {
+            name: `${payload.data.username}'s stream`,
+          },
+        },
       }
     })
   }
@@ -81,6 +86,11 @@ export async function POST(req: Request) {
         username: payload.data.username,
         imageUrl: payload.data.image_url,
         primary_email_address_id: payload.data.primary_email_address_id,
+        stream: {
+          create: {
+            name: `${payload.data.username}'s stream`,
+          },
+        },
       }
     })
   }

@@ -7,6 +7,8 @@ import {
   KeyRound,
   MessageSquare,
   Users,
+  File,
+  Video
 } from "lucide-react";
 
 import { NavItem, NavItemSkeleton } from "./nav-item";
@@ -35,6 +37,16 @@ export const Navigation = () => {
       label: "Community",
       href: `/u/${user?.username}/community`,
       icon: Users,
+    },
+    {
+      label: "Streaming Tools",
+      href: `/u/${user?.username}/StreamingTools`,
+      icon: Video,
+    },
+    {
+      label: "Docs",
+      href: `/u/${user?.username}/Docs`,
+      icon: File,
     },
   ];
 
