@@ -30,10 +30,11 @@ export const Container = ({
 
   return (
     <div className={cn(
-      "flex-1 justify-between",
-      collapsed ? "ml-[70px]" : "ml-[70px] lg:ml-60"
+      "flex-1 h-full",
+      collapsed ? "ml-[70px]" : "ml-[70px] lg:ml-60 mt-100"
     )}>
       {children}
     </div>
+   
   );
 };
