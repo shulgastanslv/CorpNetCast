@@ -35,7 +35,7 @@ export const Navigation = () => {
     },
     {
       label: "Analytics",
-      href: `/u/${user?.username}`,
+      href: `/u/${user?.username}/analytics`,
       icon: BarChart,
     },
     {
@@ -50,12 +50,12 @@ export const Navigation = () => {
     },
     {
       label: "Drops",
-      href: `/u/${user?.username}/community`,
+      href: `/u/${user?.username}/drops`,
       icon: Box,
     },
     {
       label: "Streaming Tools",
-      href: `/u/${user?.username}`,
+      href: `/u/${user?.username}/streaming-tools`,
       icon: Camera,
     },
     {
@@ -65,7 +65,7 @@ export const Navigation = () => {
     },
     {
       label: "Docs",
-      href: `/u/${user?.username}`,
+      href: `/u/${user?.username}/docs`,
       icon: BookOpen,
     },
   ];

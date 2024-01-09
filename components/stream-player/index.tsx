@@ -7,14 +7,18 @@ import { cn } from "@/lib/utils";
 import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { useViewerToken } from "@/hooks/use-viewer-token";
 
+import { InfoCard } from "./info-card";
+import { AboutCard } from "./about-card";
+import { ChatToggle } from "./chat-toggle";
 import { Chat, ChatSkeleton } from "./chat";
 import { Video, VideoSkeleton } from "./video";
-import { ChatToggle } from "./chat-toggle";
 import { Header, HeaderSkeleton } from "./header";
-import { InfoCard } from "./info-card";
 
 interface StreamPlayerProps {
-  user: User & { stream: Stream | null };
+  user: User & { 
+    stream: Stream | null,
+    _count: { followedBy: number }
+  };
   stream: Stream;
   isFollowing: boolean;
 }
@@ -32,11 +36,7 @@ export const StreamPlayer = ({
   const { collapsed } = useChatSidebar((state) => state);
 
   if (!token || !name || !identity) {
-    return (
-      <div>
-        Cannot watch the stream
-      </div>
-    )
+    return <StreamPlayerSkeleton />
   }
 
   return (
@@ -59,7 +59,7 @@ export const StreamPlayer = ({
             hostName={user.username}
             hostIdentity={user.id}
           />
-           <Header
+          <Header
             hostName={user.username}
             hostIdentity={user.id}
             viewerIdentity={identity}
@@ -67,12 +67,18 @@ export const StreamPlayer = ({
             isFollowing={isFollowing}
             name={stream.name}
           />
-
           <InfoCard
-          hostIdentity={user.id}
-          viewerIdentity={identity}
-          name={stream.name}
-          thumbnailUrl={stream.thumbnailUrl}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            name={stream.name}
+            thumbnailUrl={stream.thumbnailUrl}
+          />
+          <AboutCard
+            hostName={user.username}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            bio={user.bio}
+            followedByCount={user._count.followedBy}
           />
         </div>
         <div
@@ -95,7 +101,6 @@ export const StreamPlayer = ({
     </>
   );
 };
-
 
 export const StreamPlayerSkeleton = () => {
   return (
