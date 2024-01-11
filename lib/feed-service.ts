@@ -17,14 +17,25 @@ export const getStreams = async () => {
     streams = await db.stream.findMany({
       where: {
         user: {
-          NOT: {
-            blocking: {
-              some: {
-                blockedId: userId,
+            AND: [
+              {
+                NOT: {
+                  blocking: {
+                    some: {
+                      blockedId: userId,
+                    }
+                  },
+                },
+              },
+              {
+                NOT: {
+                  stream:{
+                    isLive : false
+                  }
+                }
               }
-            }
+          ],
           }
-        }
       },
       select: {
         id: true,

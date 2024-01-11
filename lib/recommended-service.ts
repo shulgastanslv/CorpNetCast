@@ -33,13 +33,6 @@ export const getRecommended = async () => {
           },
           {
             NOT: {
-              stream: {
-                isLive: false
-              },
-            },
-          },
-          {
-            NOT: {
               blocking: {
                 some: {
                   blockedId: userId,

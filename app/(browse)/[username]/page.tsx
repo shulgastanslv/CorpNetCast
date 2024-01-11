@@ -4,6 +4,7 @@ import { notFound } from "next/dist/client/components/not-found";
 import { Actions } from "./_components/actions";
 import { isBlockedByUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/components/stream-player";
+import { Button } from "@/components/ui/button";
 
 
 interface UserPageProps {
@@ -24,17 +25,19 @@ const UserPage = async ({
   const isFollowing = await isFollowingUser(user.id);
   const isBlocked = await isBlockedByUser(user.id);
 
-  if(isBlocked){
+  if (isBlocked) {
     notFound()
   }
 
-  return ( 
-    <StreamPlayer
-    user={user}
-    stream={user.stream}
-    isFollowing={isFollowing}
-  />
+  return (
+    <>
+      <StreamPlayer
+        user={user}
+        stream={user.stream}
+        isFollowing={isFollowing}
+      />
+    </>
   );
 }
- 
+
 export default UserPage;

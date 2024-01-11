@@ -35,6 +35,21 @@ export const getFollowedUsers = async () => {
   }
 };
 
+export const getFollowedUsersByDate = async (dates: any) => {
+  try {
+    const self = await getSelf();
+
+    const followedUsers = await getFollowedUsers();
+
+    return followedUsers.map(i => i.createdAt.getFullYear());
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+
+
 export const isFollowingUser = async (id: string) => {
   try {
     const self = await getSelf();

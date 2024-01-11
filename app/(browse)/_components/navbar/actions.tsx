@@ -71,7 +71,7 @@ export const Actions  = async () => {
             className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
             asChild
           >
-            <Link href="#">
+            <Link href="/jolts/u/${user.username}">
               <BatteryCharging className="h-5 w-5 mr-1" />
               <span>
                 Get Jolts

@@ -49,16 +49,6 @@ export const Navigation = () => {
       icon: MessageSquare,
     },
     {
-      label: "Drops",
-      href: `/u/${user?.username}/drops`,
-      icon: Box,
-    },
-    {
-      label: "Streaming Tools",
-      href: `/u/${user?.username}/streaming-tools`,
-      icon: Camera,
-    },
-    {
       label: "Community",
       href: `/u/${user?.username}/community`,
       icon: Users,
