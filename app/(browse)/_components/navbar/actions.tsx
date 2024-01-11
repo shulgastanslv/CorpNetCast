@@ -12,7 +12,7 @@ import { Hint } from "@/components/hint";
 import { useState } from "react";
 import { JoltsModal } from "@/components/jolts/jolts-modal";
 
-export const Actions  = async () => {
+export const Actions = async () => {
   const user = await currentUser();
 
   return (
@@ -65,19 +65,21 @@ export const Actions  = async () => {
               </Link>
             </Button>
           </Hint>
-          <Button
-            size="sm"
-            variant="secondary"
-            className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
-            asChild
-          >
-            <Link href="/jolts/u/${user.username}">
-              <BatteryCharging className="h-5 w-5 mr-1" />
-              <span>
-                Get Jolts
-              </span>
-            </Link>
-          </Button>
+          <Hint label="Jolts" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
+              asChild
+            >
+              <Link href="/jolts/u/${user.username}">
+                <BatteryCharging className="h-5 w-5 mr-1" />
+                <span>
+                  Get Jolts
+                </span>
+              </Link>
+            </Button>
+          </Hint>
           <UserButton
             afterSignOutUrl="/">
           </UserButton>
