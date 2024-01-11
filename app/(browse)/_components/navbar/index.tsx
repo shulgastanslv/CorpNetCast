@@ -1,16 +1,23 @@
+import { UserButton } from "@clerk/nextjs";
 import { Actions } from "./actions";
 import { Logo } from "./logo";
 import { Search } from "./search";
 
 
 export const Navbar = () => {
-    return (
-      <nav className="fixed top-0 w-full h-16 z-[49] px-2 lg:px-4 flex justify-between items-center shadow-md">
+  return (
+    <nav className="fixed top-0 w-full h-16 z-[49] px-2 lg:px-4 flex justify-between items-center shadow-md">
+      <div className="items-center m-0">
         <Logo></Logo>
+      </div>
+      <div className="items-center">
         <Search></Search>
+      </div>
+      <div className="items-center m-0">
         <Actions />
-      </nav>
-    );
-  };
- 
+      </div>
+    </nav>
+  );
+};
+
 export default Navbar;

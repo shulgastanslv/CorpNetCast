@@ -15,13 +15,13 @@ import { updateUser } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-interface BioModalProps {
+interface JoltsModalProps {
   initialValue: string | null;
 };
 
-export const BioModal = ({
+export const JoltsModal = ({
   initialValue,
-}: BioModalProps) => {
+}: JoltsModalProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const [isPending, startTransition] = useTransition();
@@ -49,16 +49,9 @@ export const BioModal = ({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit user bio</DialogTitle>
+          <DialogTitle>...</DialogTitle>
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-4">
-          <Textarea
-            placeholder="User bio"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-            disabled={isPending}
-            className="resize-none"
-          />
           <div className="flex justify-between">
             <DialogClose ref={closeRef} asChild>
               <Button type="button" variant="ghost">

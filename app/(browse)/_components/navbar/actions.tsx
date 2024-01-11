@@ -1,46 +1,86 @@
 import Link from "next/link";
-import { Clapperboard } from "lucide-react";
-import { 
-  SignInButton, 
-  SignUpButton, 
-  UserButton, 
+import { BatteryCharging, BatteryWarning, Clapperboard, Gift, Inbox } from "lucide-react";
+import {
+  SignInButton,
+  SignUpButton,
+  UserButton,
   currentUser
 } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
+import { Hint } from "@/components/hint";
+import { useState } from "react";
+import { JoltsModal } from "@/components/jolts/jolts-modal";
 
-export const Actions = async () => {
+export const Actions  = async () => {
   const user = await currentUser();
 
   return (
+
     <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
       {!user && (
         <div className="flex items-center">
-        <SignInButton>
-          <Button size="sm" variant="default">
-            Sign In
-          </Button>
-        </SignInButton>
+          <SignInButton>
+            <Button size="sm" variant="default">
+              Sign In
+            </Button>
+          </SignInButton>
         </div>
       )}
       {!!user && (
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center">
+          <Hint label="Gifts" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-muted-foreground hover:text-primary"
+              asChild
+            >
+              <Link href={`/u/${user.username}`}>
+                <Gift className="h-5 w-5" />
+              </Link>
+            </Button>
+          </Hint>
+          <Hint label="Inbox" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-muted-foreground hover:text-primary"
+              asChild
+            >
+              <Link href={`/inbox-home/${user.username}`}>
+                <Inbox className="h-5 w-5" />
+              </Link>
+            </Button>
+          </Hint>
+          <Hint label="Dashboard" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-muted-foreground hover:text-primary"
+              asChild
+            >
+              <Link href={`/u/${user.username}`}>
+                <Clapperboard className="h-5 w-5" />
+              </Link>
+            </Button>
+          </Hint>
           <Button
             size="sm"
-            variant="ghost"
-            className="text-muted-foreground hover:text-primary"
+            variant="secondary"
+            className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
             asChild
           >
-            <Link href={`/u/${user.username}`}>
-              <Clapperboard className="h-5 w-5 lg:mr-2" />
-              <span className="hidden lg:block">
-                Dashboard
+            <Link href="#">
+              <BatteryCharging className="h-5 w-5 mr-1" />
+              <span>
+                Get Jolts
               </span>
             </Link>
           </Button>
           <UserButton
             afterSignOutUrl="/">
-            </UserButton>
+          </UserButton>
         </div>
       )}
     </div>
