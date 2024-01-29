@@ -147,6 +147,7 @@ export const unfollowUser = async (id: string) => {
     throw new Error("Not following");
   }
 
+
   const follow = await db.follow.delete({
     where: {
       id: existingFollow.id,
