@@ -44,26 +44,11 @@ export const Actions = async () => {
             <Button
               size="sm"
               variant="ghost"
-              className="text-muted-foreground hover:text-primary"
+              className="text-muted-foreground hover:text-primary mr-5"
               asChild
             >
               <Link href={`/u/${user.username}`}>
                 <Clapperboard className="h-5 w-5" />
-              </Link>
-            </Button>
-          </Hint>
-          <Hint label="Jolts" side="bottom" asChild>
-            <Button
-              size="sm"
-              variant="secondary"
-              className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
-              asChild
-            >
-              <Link href="/jolts/u/${user.username}">
-                <BatteryCharging className="h-5 w-5 mr-1" />
-                <span>
-                  Get Jolts
-                </span>
               </Link>
             </Button>
           </Hint>
