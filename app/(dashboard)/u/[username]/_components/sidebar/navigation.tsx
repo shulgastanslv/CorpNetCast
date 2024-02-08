@@ -53,17 +53,12 @@ export const Navigation = () => {
       href: `/u/${user?.username}/community`,
       icon: Users,
     },
-    {
-      label: "Docs",
-      href: `/u/${user?.username}/docs`,
-      icon: BookOpen,
-    },
   ];
 
   if (!user?.username) {
     return (
       <ul className="space-y-2">
-        {[...Array(4)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <NavItemSkeleton key={i} />
         ))}
       </ul>

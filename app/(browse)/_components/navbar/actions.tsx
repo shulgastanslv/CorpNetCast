@@ -52,17 +52,16 @@ export const Actions = async () => {
               </Link>
             </Button>
           </Hint>
-          <Hint label="Jolts" side="bottom" asChild>
+          <Hint label="Upgrade" side="bottom" asChild>
             <Button
               size="sm"
-              variant="secondary"
-              className="text-muted-foreground hover:bg-muted hover:text-primary mr-2"
+              variant="outline"
+              className="mr-4"
               asChild
             >
-              <Link href="/jolts/u/${user.username}">
-                <BatteryCharging className="h-5 w-5 mr-1" />
+              <Link href="/upgrade/u/${user.username}">
                 <span>
-                  Get Jolts
+                  Upgrade
                 </span>
               </Link>
             </Button>

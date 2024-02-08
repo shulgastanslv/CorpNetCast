@@ -15,11 +15,11 @@ import { updateUser } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-interface JoltsModalProps {
+interface PaymentMethodsProps {
 };
 
-export const JoltsModal = ({
-}: JoltsModalProps) => {
+export const PaymentMethodsModal = ({
+}: PaymentMethodsProps) => {
     const closeRef = useRef<ElementRef<"button">>(null);
 
     const [isPending, startTransition] = useTransition();
@@ -27,7 +27,7 @@ export const JoltsModal = ({
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className="bg-black text-white px-8 py-3 rounded-full focus:outline-none hover:bg-gray-800 transition duration-300">Get Jolts</button>
+                <Button size="lg">Manage payment methods</Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>

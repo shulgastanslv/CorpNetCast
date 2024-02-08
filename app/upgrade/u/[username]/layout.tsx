@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Navbar from "./_components/navbar";
 
-const JoltsLayout = (
+const UpgradeLayout = (
     { children
     }: {
         children: React.ReactNode
@@ -9,9 +9,10 @@ const JoltsLayout = (
 
     return (
         <>
-            <Navbar />k
+            <Navbar />
+            {children}
         </>
     );
 }
 
-export default JoltsLayout;
+export default UpgradeLayout;
