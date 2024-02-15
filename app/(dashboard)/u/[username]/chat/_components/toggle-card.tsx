@@ -7,6 +7,8 @@ import { Switch } from "@/components/ui/switch";
 import { updateStream } from "@/actions/stream";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+
 type FieldTypes = "isChatEnabled" | "isChatDelayed" | "isChatFollowersOnly";
 
 interface ToggleCardProps {
@@ -24,19 +26,21 @@ export const ToggleCard = ({
 
   const onChange = () => {
     startTransition(() => {
-       updateStream({ [field]: !value })
+      updateStream({ [field]: !value })
         .then(() => toast.success("Chat settings updated!"))
         .catch(() => toast.error("Something went wrong"));
     });
   };
 
   return (
-    <div className="rounded-xl bg-muted p-6">
-      <div className="flex items-center justify-between">
-        <p className="font-semibold shrink-0">
-          {label}
-        </p>
-        <div className="space-y-2">
+
+    <Card className="w-1/2">
+      <CardHeader>
+        <CardTitle className="text-xl flex">
+          <div>
+            {label}
+          </div>
+          <div className="ml-5 items-center">
           <Switch
             disabled={isPending}
             onCheckedChange={onChange}
@@ -44,9 +48,29 @@ export const ToggleCard = ({
           >
             {value ? "On" : "Off"}
           </Switch>
-        </div>
-      </div>
-    </div>
+
+          </div>
+        </CardTitle>
+      </CardHeader>
+    </Card>
+
+
+    // <div className="rounded-xl bg-gray-100  p-6">
+    //   <div className="flex items-center justify-between">
+    //     <p className="font-semibold shrink-0">
+    //       {label}
+    //     </p>
+    //     <div className="space-y-2">
+    //       <Switch
+    //         disabled={isPending}
+    //         onCheckedChange={onChange}
+    //         checked={value}
+    //       >
+    //         {value ? "On" : "Off"}
+    //       </Switch>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

@@ -25,6 +25,8 @@ const KeysPage = async () => {
         <UrlCard value={stream.serverUrl} />
         <KeyCard value={stream.streamKey} />
       </div>
+      <div className="flex items-center justify-center">
+      </div>
     </div>
   );
 };

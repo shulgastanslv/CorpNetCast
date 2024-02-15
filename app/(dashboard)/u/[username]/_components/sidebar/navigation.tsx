@@ -24,8 +24,8 @@ export const Navigation = () => {
 
   const routes = [
     {
-      label: "Main",
-      href: `/u/${user?.username}/main`,
+      label: "News",
+      href: `/u/${user?.username}/news`,
       icon: Home,
     },
     {

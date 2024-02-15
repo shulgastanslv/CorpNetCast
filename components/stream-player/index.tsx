@@ -26,7 +26,7 @@ interface StreamPlayerProps {
 export const StreamPlayer = ({
   user,
   stream,
-  isFollowing
+  isFollowing,
 }: StreamPlayerProps) => {
   const {
     token,

@@ -35,6 +35,7 @@ const UserPage = async ({
         user={user}
         stream={user.stream}
         isFollowing={isFollowing}
+        isBlocking={isBlocked}
       />
     </>
   );

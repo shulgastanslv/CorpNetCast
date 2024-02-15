@@ -11,36 +11,36 @@ interface KeyCardProps {
   value: string | null;
 };
 
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+
+
 export const KeyCard = ({
   value,
 }: KeyCardProps) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="rounded-xl bg-muted p-6">
-      <div className="flex items-start gap-x-10">
-        <p className="font-semibold shrink-0">
-          Stream Key
-        </p>
-        <div className="space-y-2 w-full">
-          <div className="w-full flex items-center gap-x-2">
-            <Input
-              value={value || ""}
-              type={show ? "text" : "password"}
-              disabled
-              placeholder="Stream key"
-            />
-            <CopyButton value={value || ""} />
-          </div>
-          <Button
-            onClick={() => setShow(!show)}
-            size="sm"
-            variant="link"
-          >
-            {show ? "Hide" : "Show"}
-          </Button>
-        </div>
-      </div>
-    </div>
+
+    <Card>
+      <CardHeader>
+        <CardTitle> Stream Key</CardTitle>
+      </CardHeader>
+      <CardContent className="flex items-center justify-center">
+        <Input
+          value={value || ""}
+          type={show ? "text" : "password"}
+          disabled
+          placeholder="Stream key"
+        />
+        <CopyButton value={value || ""} />
+        <Button
+          onClick={() => setShow(!show)}
+          size="sm"
+          variant="link"
+        >
+          {show ? "Hide" : "Show"}
+        </Button>
+      </CardContent>
+    </Card>
   );
 };

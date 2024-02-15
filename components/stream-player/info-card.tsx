@@ -26,9 +26,9 @@ export const InfoCard = ({
   if (!isHost) return null;
 
   return (
-    <div className="px-4">
+    <div className="px-10 py-5">
       <div className="rounded-xl bg-background">
-        <div className="flex items-center gap-x-2.5 p-4">
+        <div className="flex items-center gap-x-2.5 mb-5">
           <div className="rounded-md bg-black p-2 h-auto w-auto">
             <Pencil className="h-5 w-5 stroke-white" />
           </div>
@@ -46,7 +46,7 @@ export const InfoCard = ({
           />
         </div>
         <Separator />
-        <div className="p-4 lg:p-6 space-y-4">
+        <div className="mt-5 space-y-4">
           <div>
             <h3 className="text-sm text-muted-foreground mb-2">
               Name

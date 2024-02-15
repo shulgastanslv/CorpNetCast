@@ -3,6 +3,7 @@
 import { VerifiedMark } from "@/components/verified-mark";
 
 import { BioModal } from "./bio-modal";
+import { Button } from "../ui/button";
 
 interface AboutCardProps {
   hostName: string;
@@ -26,7 +27,7 @@ export const AboutCard = ({
 
   return (
     <div className="px-4">
-      <div className="group rounded-xl bg-background p-6 lg:p-10 flex flex-col gap-y-3">
+      <div className="group rounded-xl bg-background p-6 lg:p-5 flex flex-col gap-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-2 font-semibold text-lg lg:text-2xl">
             About {hostName}
@@ -44,6 +45,14 @@ export const AboutCard = ({
         <p className="text-sm">
           {bio || "This user prefers to keep an air of mystery about them."}
         </p>
+      </div>
+      <div className="ml-5 mt-2">
+        <Button
+          variant="default"
+          size="sm"
+          className="items-center lg:w-auto">
+          Donate
+        </Button>
       </div>
     </div>
   );
