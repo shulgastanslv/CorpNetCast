@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BatteryCharging, BatteryWarning, Clapperboard, Gift, Inbox } from "lucide-react";
+import { BatteryCharging, BatteryWarning, Clapperboard, Gift, Inbox, Newspaper } from "lucide-react";
 import {
   SignInButton,
   SignUpButton,
@@ -28,15 +28,17 @@ export const Actions = async () => {
       )}
       {!!user && (
         <div className="flex items-center">
-          <Hint label="Gifts" side="bottom" asChild>
+          <Hint label="Upgrade" side="bottom" asChild>
             <Button
               size="sm"
-              variant="ghost"
-              className="text-muted-foreground hover:text-primary"
+              variant="outline"
+              className="mr-2"
               asChild
             >
-              <Link href={`/u/${user.username}`}>
-                <Gift className="h-5 w-5" />
+              <Link href="/upgrade/u/${user.username}">
+                <span>
+                  Upgrade
+                </span>
               </Link>
             </Button>
           </Hint>
@@ -44,25 +46,11 @@ export const Actions = async () => {
             <Button
               size="sm"
               variant="ghost"
-              className="text-muted-foreground hover:text-primary"
+              className="text-muted-foreground hover:text-primary mr-2"
               asChild
             >
               <Link href={`/u/${user.username}`}>
                 <Clapperboard className="h-5 w-5" />
-              </Link>
-            </Button>
-          </Hint>
-          <Hint label="Upgrade" side="bottom" asChild>
-            <Button
-              size="sm"
-              variant="outline"
-              className="mr-4"
-              asChild
-            >
-              <Link href="/upgrade/u/${user.username}">
-                <span>
-                  Upgrade
-                </span>
               </Link>
             </Button>
           </Hint>

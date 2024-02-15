@@ -28,18 +28,6 @@ export const Actions = async () => {
       )}
       {!!user && (
         <div className="flex items-center">
-          <Hint label="Gifts" side="bottom" asChild>
-            <Button
-              size="sm"
-              variant="ghost"
-              className="text-muted-foreground hover:text-primary"
-              asChild
-            >
-              <Link href={`/u/${user.username}`}>
-                <Gift className="h-5 w-5" />
-              </Link>
-            </Button>
-          </Hint>
           <Hint label="Dashboard" side="bottom" asChild>
             <Button
               size="sm"

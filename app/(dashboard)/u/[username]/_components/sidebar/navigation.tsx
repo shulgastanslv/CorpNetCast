@@ -24,11 +24,6 @@ export const Navigation = () => {
 
   const routes = [
     {
-      label: "News",
-      href: `/u/${user?.username}/news`,
-      icon: Home,
-    },
-    {
       label: "Stream Manager",
       href: `/u/${user?.username}`,
       icon: Fullscreen,
@@ -58,7 +53,7 @@ export const Navigation = () => {
   if (!user?.username) {
     return (
       <ul className="space-y-2">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(4)].map((_, i) => (
           <NavItemSkeleton key={i} />
         ))}
       </ul>
