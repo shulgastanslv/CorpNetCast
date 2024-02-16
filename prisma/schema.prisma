@@ -10,41 +10,41 @@ datasource db {
 }
 
 model User {
-  id                       String   @id @default(uuid())
-  username                 String   @unique
-  primary_email_address_id String   @unique
-  imageUrl                 String   @db.Text
-  externalUserId           String   @unique
-  bio                      String?  @db.Text
-  createdAt                DateTime @default(now())
-  updatedAt                DateTime @updatedAt
-  following                Follow[] @relation("Following")
-  followedBy               Follow[] @relation("FollowedBy")
-  blocking                 Block[]  @relation("Blocking")
-  blockedBy                Block[]  @relation("BlockedBy")
+  id                       String        @id @default(uuid())
+  username                 String        @unique
+  primary_email_address_id String        @unique
+  imageUrl                 String        @db.Text
+  externalUserId           String        @unique
+  bio                      String?       @db.Text
+  createdAt                DateTime      @default(now())
+  updatedAt                DateTime      @updatedAt
+  following                Follow[]      @relation("Following")
+  followedBy               Follow[]      @relation("FollowedBy")
+  blocking                 Block[]       @relation("Blocking")
+  blockedBy                Block[]       @relation("BlockedBy")
   stream                   Stream?
-
-  transactions  Transaction[]
+  transactions             Transaction[] 
 }
 
 model News {
   id          String   @id @default(uuid())
-  title                 String   @db.Text
-  name                  String   @db.Text
-  imageUrl                 String   @db.Text
-  description           String   @db.Text
+  title       String   @db.Text
+  name        String   @db.Text
+  imageUrl    String   @db.Text
+  description String   @db.Text
   createdAt   DateTime @default(now())
 }
 
 model Transaction {
-  id          String   @id @default(uuid())
-  userId      String
-  amount      Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  user        User     @relation(fields: [userId], references: [id])
-}
+  id        String   @id @default(uuid())
+  userId    String
+  amount    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 
+  @@index([userId])
+}
 
 model Follow {
   id          String   @id @default(uuid())

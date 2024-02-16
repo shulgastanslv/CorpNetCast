@@ -55,7 +55,7 @@ export const Actions = ({
   const handleUnblock = () => {
     startTransition(() => {
       onUnblock(userId)
-        .then((data) => toast.success(`Unblocked the user ${data.blocked.username}`))
+        .then((data) => toast.success(`Unblocked user`))
         .catch(() => toast.error("Something went wrong"));
     });
   };
@@ -63,7 +63,7 @@ export const Actions = ({
   const handleBlock = () => {
     startTransition(() => {
       onBlock(userId)
-        .then((data) => toast.success(`Blocked the user ${data.blocked.username}`))
+        .then((data) => toast.success(`Blocked user`))
         .catch(() => toast.error("Something went wrong"));
     });
   };
