@@ -7,7 +7,7 @@ export const Results = async () => {
   const data = await getStreams();
 
   return (
-    <div>
+    <div className="py-10">
       <h2 className="text-lg font-semibold mb-4">
         Streams we think you&apos;ll like
       </h2>

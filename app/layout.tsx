@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { dark } from '@clerk/themes'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
-
+import { dark } from '@clerk/themes';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,15 +26,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider  appearance={{
+      baseTheme: dark,
+      signIn: {
+        baseTheme: dark,
+      }
+    }}>
       <html lang="en">
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
-            forcedTheme="light"
+            forcedTheme="dark"
             storageKey="ambient-theme"
           >
-            <Toaster theme="light" position='bottom-center' />
+            <Toaster theme="dark" position='bottom-center' />
             {children}
           </ThemeProvider>
         </body>

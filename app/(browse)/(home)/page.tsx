@@ -1,32 +1,22 @@
 import { Suspense } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import { Results, ResultsSkeleton } from "./_components/results";
 
+import React from "react";
+import { CarouselResults } from "./_components/carousel-results";
+import { Separator } from "@radix-ui/react-separator";
+
 export default function Page() {
+
   return (
-    <div className="h-full p-20">
-      <Carousel className="items-center justify-center flex">
-        <CarouselContent>
-          <CarouselItem>...</CarouselItem>
-          <CarouselItem>...</CarouselItem>
-          <CarouselItem>...</CarouselItem>
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-      <div className="space-y-2 py-10">
-        <h2 className="text-lg font-semibold mb-4">Now Trending</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400">The most popular content right now</p>
-      </div>
+    <div className="p-16">
+      <CarouselResults />
       <Suspense fallback={<ResultsSkeleton />}>
         <Results />
       </Suspense>
+      <div className="space-y-2">
+        <h2 className="text-lg font-semibold mb-4">News</h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Recent news in our eco system</p>
+      </div>
     </div>
   );
 };
