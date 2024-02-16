@@ -13,7 +13,8 @@ import {
   BookOpen,
   Video,
   Box,
-  Camera
+  Camera,
+  CircleDollarSignIcon
 } from "lucide-react";
 
 import { NavItem, NavItemSkeleton } from "./nav-item";
@@ -32,6 +33,11 @@ export const Navigation = () => {
       label: "Analytics",
       href: `/u/${user?.username}/analytics`,
       icon: BarChart,
+    },
+    {
+      label: "Earnings",
+      href: `/u/${user?.username}/earnings`,
+      icon: CircleDollarSignIcon,
     },
     {
       label: "Keys",
