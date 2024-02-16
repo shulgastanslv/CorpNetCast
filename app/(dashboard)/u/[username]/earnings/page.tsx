@@ -14,7 +14,6 @@ const EarningsPage = () => {
           Earnings
         </h1>
       </div>
-
     </div>
   );
 }

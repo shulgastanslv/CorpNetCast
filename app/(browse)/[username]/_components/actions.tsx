@@ -63,7 +63,7 @@ export const Actions = ({
   const handleBlock = () => {
     startTransition(() => {
       onBlock(userId)
-        .then((data) => toast.success(`Blocked user`))
+        .then((data) => toast.success(`Blocked the user`))
         .catch(() => toast.error("Something went wrong"));
     });
   };

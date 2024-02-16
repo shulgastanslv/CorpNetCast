@@ -2,6 +2,7 @@ import { currentUser } from "@clerk/nextjs";
 
 import { getUserByUsername } from "@/lib/user-service";
 import { StreamPlayer } from "@/components/stream-player";
+import { isBlockedByUser } from "@/lib/block-service";
 
 interface CreatorPageProps {
   params: {
@@ -19,7 +20,9 @@ const CreatorPage = async ({
     throw new Error("Unauthorized");
   }
 
-  return ( 
+  const isBlocked = await isBlockedByUser(user.id);
+
+  return (
     <div className="h-full">
       <StreamPlayer
         user={user}
@@ -29,5 +32,5 @@ const CreatorPage = async ({
     </div>
   );
 }
- 
+
 export default CreatorPage;
