@@ -14,7 +14,7 @@ export const Logo = () => {
             <div className="bg-white rounded-full p-1">
                 <Image
                     src="/logo.svg"
-                    alt="Ambient"
+                    alt="CorpNetCast"
                     height="40"
                     width="40"
                 />
@@ -24,7 +24,7 @@ export const Logo = () => {
                 font.className,
             )}>
                 <p className="text-xl font-semibold">
-                    Ambient
+                    CorpNetCast
                 </p>
                 <p className="text-sm text-muted-foreground">
                     Let&apos;s play

@@ -16,7 +16,7 @@ model User {
   imageUrl                 String        @db.Text
   externalUserId           String        @unique
   bio                      String?       @db.Text
-  balance                  Int           @db.Int
+  balance                  Int?           @db.Int
   createdAt                DateTime      @default(now())
   updatedAt                DateTime      @updatedAt
   following                Follow[]      @relation("Following")
@@ -32,7 +32,7 @@ model User {
 model Upgrade {
   id        String   @id @default(uuid())
   userId    String   @unique
-  plan      String   @unique
+  plan      String   @db.Text
   description String   @db.Text
   startDate DateTime @default(now())
   endDate   DateTime?

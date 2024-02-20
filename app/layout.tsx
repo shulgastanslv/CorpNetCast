@@ -7,8 +7,8 @@ import { dark } from '@clerk/themes';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Ambient',
-  description: 'live streaming platform',
+  title: 'CorpNetCast',
+  description: 'platform for communication/broadcasting within the company',
 }
 
 import {
@@ -37,7 +37,7 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             forcedTheme="dark"
-            storageKey="ambient-theme"
+            storageKey="my-theme"
           >
             <Toaster theme="dark" position='bottom-center' />
             {children}

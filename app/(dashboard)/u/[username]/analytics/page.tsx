@@ -22,34 +22,11 @@ interface AnalyticsPageProps {
 };
 
 
-const AnalyticsPage = ({ params }: AnalyticsPageProps) => {
+const AnalyticsPage = async ({ params }: AnalyticsPageProps) => {
+
+    const user = await getUserByUsername(params.username)
 
     return (
-
-
-
-        // <div className="container mx-auto p-10">
-        //     <header className="text-center mb-8">
-        //         <h1 className="text-3xl font-bold">Your Analytics</h1>
-        //         <p className="text-gray-500">Track your Ambient performance</p>
-        //     </header>
-
-        //     <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        //         <div className="bg-white p-6 rounded-lg shadow-md">
-        //             <h2 className="text-xl font-bold mb-4">Account Details</h2>
-        //             <div className="flex justify-between">
-        //                 <span className="text-gray-600">Followers</span>
-        //                 <span className="text-2xl font-bold">{followers}</span>
-        //             </div>
-        //             <div className="flex justify-between mt-2">
-        //                 <span className="text-gray-600">Account Created</span>
-        //                 <span className="text-2xl font-bold">{user?.createdAt.toDateString()}</span>
-        //             </div>
-        //         </div>
-
-        //         <FollowersChart data={subscriberChartData} options={chartOptions} />
-        //     </section>
-        // </div>
 
         <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
             <div className="flex items-center gap-4">
@@ -82,7 +59,7 @@ const AnalyticsPage = ({ params }: AnalyticsPageProps) => {
                 <Card className="flex flex-col">
                     <CardHeader>
                         <CardDescription>Followers</CardDescription>
-                        <CardTitle>10.5K</CardTitle>
+                        <CardTitle>{user?._count.followedBy}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex items-center justify-center">
                         <CurvedlineChart className="h-[200px] w-full aspect-[4/3]" />
