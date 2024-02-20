@@ -4,47 +4,27 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id                       String        @id @default(uuid())
-  username                 String        @unique
-  primary_email_address_id String        @unique
-  imageUrl                 String        @db.Text
-  externalUserId           String        @unique
-  bio                      String?       @db.Text
-  balance                  Int?           @db.Int
-  createdAt                DateTime      @default(now())
-  updatedAt                DateTime      @updatedAt
-  following                Follow[]      @relation("Following")
-  followedBy               Follow[]      @relation("FollowedBy")
-  blocking                 Block[]       @relation("Blocking")
-  blockedBy                Block[]       @relation("BlockedBy")
+  id                       String     @id @default(uuid())
+  username                 String     @unique
+  primary_email_address_id String     @unique
+  imageUrl                 String     @db.Text
+  externalUserId           String     @unique
+  bio                      String?    @db.Text
+  createdAt                DateTime   @default(now())
+  updatedAt                DateTime   @updatedAt
+  following                Follow[]   @relation("Following")
+  followedBy               Follow[]   @relation("FollowedBy")
+  blocking                 Block[]    @relation("Blocking")
+  blockedBy                Block[]    @relation("BlockedBy")
   stream                   Stream?
-  transactions             Transaction[]
   inventory                Inventory?
-  upgrade Upgrade?
 }
-
-model Upgrade {
-  id        String   @id @default(uuid())
-  userId    String   @unique
-  plan      String   @db.Text
-  description String   @db.Text
-  startDate DateTime @default(now())
-  endDate   DateTime?
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-
 
 model News {
   id          String   @id @default(uuid())
@@ -76,17 +56,6 @@ model Inventory {
 
   @@index([userId])
   @@index([itemId])
-}
-
-model Transaction {
-  id        String   @id @default(uuid())
-  userId    String
-  amount    Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
-
-  @@index([userId])
 }
 
 model Follow {
@@ -133,5 +102,4 @@ model Stream {
 
   @@index([userId])
   @@index([ingressId])
-  @@fulltext([name])
 }
