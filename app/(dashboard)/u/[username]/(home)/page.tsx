@@ -1,8 +1,7 @@
-import { currentUser } from "@clerk/nextjs";
-
 import { getUserByUsername } from "@/lib/user-service";
 import { StreamPlayer } from "@/components/stream-player";
 import { isBlockedByUser } from "@/lib/block-service";
+import { currentUser } from "@/lib/auth-service";
 
 interface CreatorPageProps {
   params: {

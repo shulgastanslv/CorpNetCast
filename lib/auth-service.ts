@@ -13,16 +13,14 @@ export const currentRole = async () => {
   return session?.user?.role;
 };
 
-
-
 import { db } from "@/lib/db";
 
 export const getSelf = async () => {
   const self = await currentUser();
 
-  if (!self || !self.name) {
-    throw new Error("Unauthorized");
-  }
+  // if (!self || !self.name) {
+  //   throw new Error("Unauthorized");
+  // }
 
   const user = await db.user.findUnique({
     where: { externalUserId: self.id },
@@ -38,10 +36,6 @@ export const getSelf = async () => {
 export const getSelfByUsername = async (username: string) => {
   const self = await currentUser();
 
-  if (!self || !self.name) {
-    throw new Error("Unauthorized");
-  }
-
   const user = await db.user.findUnique({
     where: { username }
   });
@@ -50,9 +44,6 @@ export const getSelfByUsername = async (username: string) => {
     throw new Error("User not found");
   }
 
-  if (self.name !== user.username) {
-    throw new Error("Unauthorized");
-  }
 
   return user;
 };
