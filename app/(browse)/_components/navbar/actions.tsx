@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { BatteryCharging, BatteryWarning, Clapperboard, Gift, Inbox, Newspaper } from "lucide-react";
-import {
-  SignInButton,
-  SignUpButton,
-  UserButton,
-  currentUser
-} from "@clerk/nextjs";
+
 
 import { Button } from "@/components/ui/button";
 import { Hint } from "@/components/hint";
 import { useState } from "react";
+import { currentUser } from "@/lib/auth-service";
+import { LoginButton } from "@/components/auth/login-button";
 
 export const Actions = async () => {
   const user = await currentUser();
@@ -19,11 +16,11 @@ export const Actions = async () => {
     <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
       {!user && (
         <div className="flex items-center">
-          <SignInButton>
+          <LoginButton>
             <Button size="sm" variant="default">
               Sign In
             </Button>
-          </SignInButton>
+          </LoginButton>
         </div>
       )}
       {!!user && (
@@ -49,14 +46,11 @@ export const Actions = async () => {
               className="text-muted-foreground hover:text-primary mr-2"
               asChild
             >
-              <Link href={`/u/${user.username}`}>
+              <Link href={`/u/${user.name}`}>
                 <Clapperboard className="h-5 w-5" />
               </Link>
             </Button>
           </Hint>
-          <UserButton
-            afterSignOutUrl="/">
-          </UserButton>
         </div>
       )}
     </div>

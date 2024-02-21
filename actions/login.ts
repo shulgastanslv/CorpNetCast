@@ -21,9 +21,12 @@ export const login = async (
 
   const { username, password } = validatedFields.data;
 
+  console.log(username)
+  console.log(password)
+
   const existingUser = await getUserByUsername(username);
 
-  if (!existingUser || !existingUser.username || !existingUser.password) {
+  if (!existingUser?.username) {
     return { error: "Username does not exist!" }
   }
 
@@ -31,7 +34,7 @@ export const login = async (
     await signIn("credentials", {
       username,
       password,
-      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
     })
   } catch (error) {
     if (error instanceof AuthError) {

@@ -1,11 +1,26 @@
-import { currentUser } from "@clerk/nextjs";
+import { auth } from "@/auth";
+
+
+export const currentUser = async () => {
+  const session = await auth();
+
+  return session?.user;
+};
+
+export const currentRole = async () => {
+  const session = await auth();
+
+  return session?.user?.role;
+};
+
+
 
 import { db } from "@/lib/db";
 
 export const getSelf = async () => {
   const self = await currentUser();
 
-  if (!self || !self.username) {
+  if (!self || !self.name) {
     throw new Error("Unauthorized");
   }
 
@@ -23,7 +38,7 @@ export const getSelf = async () => {
 export const getSelfByUsername = async (username: string) => {
   const self = await currentUser();
 
-  if (!self || !self.username) {
+  if (!self || !self.name) {
     throw new Error("Unauthorized");
   }
 
@@ -35,7 +50,7 @@ export const getSelfByUsername = async (username: string) => {
     throw new Error("User not found");
   }
 
-  if (self.username !== user.username) {
+  if (self.name !== user.username) {
     throw new Error("Unauthorized");
   }
 
