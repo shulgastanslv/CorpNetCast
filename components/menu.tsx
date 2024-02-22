@@ -16,9 +16,9 @@ import {
 import { SelfAvatar } from "./self-avatar";
 import { getSelf } from "@/lib/auth-service";
 import Link from "next/link";
-import { DropdownMenuIcon } from "@radix-ui/react-icons";
-import { Clapperboard, ClapperboardIcon, User, User2, User2Icon } from "lucide-react";
-import LogOutButton from "./logout-button";
+import { DashboardIcon, DropdownMenuIcon } from "@radix-ui/react-icons";
+import { Clapperboard, BlocksIcon, ClapperboardIcon, Code2Icon, History, NewspaperIcon, SettingsIcon, User, User2, User2Icon, Users2, Blocks, ArrowLeft } from "lucide-react";
+import MenuItem from "./menu-item";
 
 export async function Menu() {
 
@@ -27,34 +27,31 @@ export async function Menu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SelfAvatar size="default" imageUrl={user?.imageUrl} username={user?.username}></SelfAvatar>
+        <SelfAvatar size="default" imageUrl={user?.imageUrl!} username={user?.username!}/>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-52">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
           <Link href={`/profile/${user?.username}`}>
-            <div className="flex items-center justify-center">
-              <User2Icon className="w-5 h-5 mr-1"/>
-              Profile
-            </div>
+              <MenuItem icon={User2} label="Profile"></MenuItem>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={`/u/${user?.username}`}>
-              Dashboard
+            <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={`/news/`}>
-              News
+              <MenuItem icon={NewspaperIcon} label="News"></MenuItem>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Link href={`/settings/`}>
-              Settings
+              <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSub>
@@ -83,17 +80,19 @@ export async function Menu() {
             <DropdownMenuSubTrigger>About Us</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Products</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>History</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MenuItem icon={Users2} label="Team"></MenuItem>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <MenuItem icon={Blocks} label="Products"></MenuItem>
+                  </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-            <LogOutButton>Log Out</LogOutButton>
+            <MenuItem icon={ArrowLeft} label="Log Out"></MenuItem>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
