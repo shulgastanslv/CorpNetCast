@@ -6,17 +6,6 @@ export const currentUser = async () => {
   return session?.user;
 };
 
-export const useUser = () => {
-  auth()
-    .then((session) => {
-      const user = session?.user;
-      return user;
-    })
-    .catch((error) => {
-      console.error('Error fetching user data', error);
-      return null;
-    });
-};
 
 export const currentRole = async () => {
   const session = await auth();
@@ -27,12 +16,13 @@ export const currentRole = async () => {
 
 import { db } from "@/lib/db";
 import { error } from "console";
+import { revalidatePath } from "next/cache";
 
 export const getSelf = async () => {
   const self = await currentUser();
 
   if (!self?.id) {
-    throw new Error("Unauthorized");
+    return;
   }
 
   const user = await db.user.findUnique({
@@ -47,7 +37,6 @@ export const getSelf = async () => {
 };
 
 export const getSelfByUsername = async (username: string) => {
-  const self = await currentUser();
 
   const user = await db.user.findUnique({
     where: { username }

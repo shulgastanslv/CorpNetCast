@@ -45,9 +45,6 @@ export const createIngress = async (ingressType: IngressInput) => {
 
   const self = await getSelf();
 
-  console.log("User ID:", self.id);
-  console.log("Username:", self.username);
-
   await resetIngresses(self.id);
 
   const options: CreateIngressOptions = {

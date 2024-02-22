@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { BatteryCharging, BatteryWarning, Clapperboard, Gift, Inbox, Newspaper } from "lucide-react";
-
+import { BatteryCharging, BatteryWarning, Box, Clapperboard, Gift, Inbox, LucideMessageCircle, Newspaper } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Hint } from "@/components/hint";
@@ -27,7 +26,31 @@ export const Actions = async () => {
         </div>
       )}
       {!!user && (
-        <div className="flex items-center">
+        <div className="flex items-center mr-2">
+          <Hint label="Notifications" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="text-muted-foreground bg-transparent hover:bg-muted hover:text-primary mr-2"
+              asChild
+            >
+             <Link href={`/notifications/${user?.username}`}>
+                <Inbox className="w-5 h-5" />
+              </Link>
+            </Button>
+          </Hint>
+          <Hint label="Messages" side="bottom" asChild>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="text-muted-foreground bg-transparent hover:bg-muted hover:text-primary mr-2"
+              asChild
+            >
+             <Link href={`/messages/${user?.username}`}>
+                <LucideMessageCircle className="w-5 h-5" />
+              </Link>
+            </Button>
+          </Hint>
           <Menu></Menu>
         </div>
       )}
