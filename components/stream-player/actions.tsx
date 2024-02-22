@@ -3,7 +3,6 @@
 import { toast } from "sonner";
 import { Heart, MinusCircle, User } from "lucide-react";
 import { useTransition } from "react";
-import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
@@ -12,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { onBlock, onUnblock } from "@/actions/block";
 import { getUserById } from "@/lib/user-service";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface ActionsProps {
   hostIdentity: string;
@@ -29,7 +29,7 @@ export const Actions = ({
 
 
   const router = useRouter();
-  const { userId } = useAuth();
+  const userId  = useCurrentUser()?.id;
 
   const handleFollow = () => {
     startTransition(() => {

@@ -1,11 +1,10 @@
-import {format } from "date-fns";
-
 import { getBlockedUsers } from "@/lib/block-service";
 
 import { DataTable } from "./_components/data-table";
 import { columns } from "./_components/columns";
 import { Button } from '@/components/ui/button';
 import { ArrowLeftIcon, CalendarClockIcon, Link } from 'lucide-react';
+import { format } from "util";
 
 const CommunityPage = async () => {
   const blockedUsers = await getBlockedUsers();
