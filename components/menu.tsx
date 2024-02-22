@@ -18,7 +18,6 @@ import { getSelf } from "@/lib/auth-service";
 import Link from "next/link";
 import { DropdownMenuIcon } from "@radix-ui/react-icons";
 import { Clapperboard } from "lucide-react";
-import { SignOutButton } from "@clerk/nextjs";
 
 export async function Menu() {
 
@@ -41,18 +40,9 @@ export async function Menu() {
               Dashboard
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Inventory
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            News
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
+        {/* <DropdownMenuGroup>
           <DropdownMenuItem>Company</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>About Us</DropdownMenuSubTrigger>
@@ -66,10 +56,10 @@ export async function Menu() {
             </DropdownMenuPortal>
           </DropdownMenuSub>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator /> */}
         <DropdownMenuItem>
           Log Out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

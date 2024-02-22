@@ -1,4 +1,3 @@
-import { UserButton } from "@clerk/nextjs";
 import { Actions } from "./actions";
 import { Logo } from "./logo";
 import { Search } from "./search";

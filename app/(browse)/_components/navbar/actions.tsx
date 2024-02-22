@@ -9,6 +9,7 @@ import { currentUser, getSelf } from "@/lib/auth-service";
 import { LoginButton } from "@/components/auth/login-button";
 import { SelfAvatar } from "@/components/self-avatar";
 import { Menu } from "@/components/menu";
+import { signOut } from "next-auth/react";
 
 export const Actions = async () => {
   const user = await getSelf();
@@ -27,18 +28,6 @@ export const Actions = async () => {
       )}
       {!!user && (
         <div className="flex items-center">
-          {/* <Hint label="Dashboard" side="bottom" asChild>
-            <Button
-              size="sm"
-              variant="ghost"
-              className="text-muted-foreground hover:text-primary mr-2"
-              asChild
-            >
-              <Link href={`/u/${user.username}`}>
-                <Clapperboard className="h-5 w-5" />
-              </Link>
-            </Button>
-          </Hint> */}
           <Menu></Menu>
         </div>
       )}

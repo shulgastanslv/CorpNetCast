@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { randomUUID } from "crypto";
 
 const LoginPage = async () => {
-    return (<LoginForm></LoginForm>);
+    return (<LoginForm/>);
 }
  
 export default LoginPage;

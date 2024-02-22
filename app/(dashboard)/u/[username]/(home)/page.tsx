@@ -15,17 +15,15 @@ const CreatorPage = async ({
   const externalUser = await currentUser();
   const user = await getUserByUsername(params.username);
 
-  if (!user || user.externalUserId !== externalUser?.id || !user.stream) {
+  if (!user?.id) {
     throw new Error("Unauthorized");
   }
-
-  const isBlocked = await isBlockedByUser(user.id);
 
   return (
     <div className="h-full">
       <StreamPlayer
         user={user}
-        stream={user.stream}
+        stream={user?.stream}
         isFollowing
       />
     </div>

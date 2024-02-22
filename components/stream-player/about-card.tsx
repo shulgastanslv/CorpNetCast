@@ -46,14 +46,6 @@ export const AboutCard = ({
           {bio || "This user prefers to keep an air of mystery about them."}
         </p>
       </div>
-      <div className="ml-5 mt-2">
-        <Button
-          variant="default"
-          size="sm"
-          className="items-center lg:w-auto">
-          Donate
-        </Button>
-      </div>
     </div>
   );
 };

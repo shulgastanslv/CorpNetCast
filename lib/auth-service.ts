@@ -1,10 +1,21 @@
 import { auth } from "@/auth";
 
-
 export const currentUser = async () => {
   const session = await auth();
 
   return session?.user;
+};
+
+export const useUser = () => {
+  auth()
+    .then((session) => {
+      const user = session?.user;
+      return user;
+    })
+    .catch((error) => {
+      console.error('Error fetching user data', error);
+      return null;
+    });
 };
 
 export const currentRole = async () => {
@@ -13,17 +24,19 @@ export const currentRole = async () => {
   return session?.user?.role;
 };
 
+
 import { db } from "@/lib/db";
+import { error } from "console";
 
 export const getSelf = async () => {
   const self = await currentUser();
 
-  // if (!self || !self.name) {
-  //   throw new Error("Unauthorized");
-  // }
+  if (!self?.id) {
+    throw new Error("Unauthorized");
+  }
 
   const user = await db.user.findUnique({
-    where: { externalUserId: self.id },
+    where: { externalUserId: self?.id },
   });
 
   if (!user) {
@@ -40,10 +53,10 @@ export const getSelfByUsername = async (username: string) => {
     where: { username }
   });
 
-  if (!user) {
+
+  if (!user?.id) {
     throw new Error("User not found");
   }
-
 
   return user;
 };

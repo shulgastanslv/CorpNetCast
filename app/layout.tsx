@@ -3,35 +3,25 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from 'sonner'
-import { dark } from '@clerk/themes';
 const inter = Inter({ subsets: ['latin'] })
+import { SessionProvider } from 'next-auth/react'
+import { auth } from '@/auth'
 
 export const metadata: Metadata = {
   title: 'CorpNetCast',
   description: 'platform for communication/broadcasting within the company',
 }
 
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
-
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const session = await auth();
+
   return (
-    <ClerkProvider  appearance={{
-      baseTheme: dark,
-      signIn: {
-        baseTheme: dark,
-      }
-    }}>
+    <SessionProvider session={session}>
       <html lang="en">
         <body className={inter.className}>
           <ThemeProvider
@@ -44,6 +34,6 @@ export default function RootLayout({
           </ThemeProvider>
         </body>
       </html>
-    </ClerkProvider>
+      </SessionProvider>
   )
 }
