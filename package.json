@@ -13,6 +13,7 @@
     "@auth/prisma-adapter": "^1.4.0",
     "@clerk/nextjs": "^4.29.1",
     "@clerk/themes": "^1.7.9",
+    "@headlessui/react": "^1.7.18",
     "@hookform/resolvers": "^3.3.4",
     "@livekit/components-react": "^1.5.1",
     "@nivo/line": "^0.84.0",

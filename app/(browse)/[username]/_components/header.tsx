@@ -21,7 +21,7 @@ export const Header = ({
 }: HeaderProps) => {
   
   return (
-    <div className="flex items-start justify-between py-5 px-6">
+    <div className="flex items-start justify-between">
       <div className="flex items-center gap-x-3">
         <UserAvatar
           imageUrl={imageUrl}
