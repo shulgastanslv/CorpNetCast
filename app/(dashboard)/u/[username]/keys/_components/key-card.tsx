@@ -23,7 +23,7 @@ export const KeyCard = ({
 
     <Card>
       <CardHeader>
-        <CardTitle> Stream Key</CardTitle>
+        <CardTitle className="text-base"> Stream Key</CardTitle>
       </CardHeader>
       <CardContent className="flex items-center justify-center">
         <Input

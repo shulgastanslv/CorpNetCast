@@ -34,7 +34,7 @@ export async function Menu() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-          <Link href={`/profile/${user?.username}`}>
+          <Link href={`/${user?.username}`}>
               <MenuItem icon={User2} label="Profile"></MenuItem>
             </Link>
           </DropdownMenuItem>

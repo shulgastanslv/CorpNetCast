@@ -36,7 +36,7 @@ export const ToggleCard = ({
 
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-xs flex">
+        <CardTitle className="text-base flex">
           <div>
             {label}
           </div>

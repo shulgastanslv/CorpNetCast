@@ -7,7 +7,7 @@ const NewsPage = async () => {
   const news = await getNews();
 
   return (
-    
+    <div>News</div>
   );
 }
 

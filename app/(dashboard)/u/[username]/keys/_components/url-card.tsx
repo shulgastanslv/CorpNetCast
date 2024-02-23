@@ -13,7 +13,7 @@ export const UrlCard = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Server URL</CardTitle>
+        <CardTitle className="text-base">Server URL</CardTitle>
       </CardHeader>
       <CardContent className="flex items-center justify-center">
         <Input
