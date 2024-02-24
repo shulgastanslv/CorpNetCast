@@ -1,9 +1,14 @@
 import { notFound } from "next/navigation";
-
 import { getUserByUsername } from "@/lib/user-service";
 import { isFollowingUser } from "@/lib/follow-service";
 import { isBlockedByUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/components/stream-player";
+import { useViewerToken } from "@/hooks/use-viewer-token";
+import { Header } from "./_components/header";
+import { UserAvatar } from "@/components/user-avatar";
+import { UserBanner } from "./_components/banner";
+import NavMenu from "./_components/navigation";
+
 
 interface UserPageProps {
   params: {
@@ -27,13 +32,19 @@ const UserPage = async ({
     notFound();
   }
 
-  return ( 
-    <StreamPlayer
-      user={user}
-      stream={user.stream}
-      isFollowing={isFollowing}
-    />
+  return (
+
+    <>
+      <UserBanner
+        imageUrl={user?.imageUrl!}
+      />
+      <div className="h-full bg-black py-5 px-6">
+        <Header imageUrl={user?.imageUrl!} />
+        <NavMenu/>
+      </div>
+    </>
+
   );
 }
- 
+
 export default UserPage;

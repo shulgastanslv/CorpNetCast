@@ -16,10 +16,12 @@ export const {
     async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
+        session.user.name = token.name;
       }
 
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
+        session.user.name = token.name;
       }
 
       return session;
@@ -32,6 +34,7 @@ export const {
       if (!existingUser) return token;
 
       token.role = existingUser.role;
+      token.name = existingUser.username;
 
       return token;
     }

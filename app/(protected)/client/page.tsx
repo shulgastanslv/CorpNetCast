@@ -1,16 +1,27 @@
-import { signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
 
-const ProtectedClientPage = () => {
-    return (<div>
-        <form action={async () => {
+const ProtectedClientPage = async () => {
+
+  const session = await auth();
+
+
+  return (<div>
+    {JSON.stringify(session, null, "\n")}
+    <div className="mt-5">
+      <form action={async () => {
         "use server";
 
         await signOut();
       }}>
-        <button type="submit">
+        <Button type="submit">
           Sign out
-        </button>
-        </form></div>);
+        </Button>
+      </form>
+      </div>
+    </div>
+    );
+
 }
- 
-export default ProtectedClientPage;
+
+    export default ProtectedClientPage;

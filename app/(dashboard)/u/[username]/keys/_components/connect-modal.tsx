@@ -52,7 +52,7 @@ export const ConnectModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">
+        <Button size="sm" variant="default">
           Generate connection
         </Button>
       </DialogTrigger>
