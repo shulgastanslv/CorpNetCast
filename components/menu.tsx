@@ -39,21 +39,16 @@ export async function Menu() {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link href={`/u/${user?.username}`}>
-            <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
             <Link href={`/news/`}>
               <MenuItem icon={NewspaperIcon} label="News"></MenuItem>
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href={`/settings/`}>
-              <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
+            <Link href={`/u/${user?.username}`}>
+            <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Language</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -73,23 +68,11 @@ export async function Menu() {
             </DropdownMenuPortal>
           </DropdownMenuSub>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>Company</DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>About Us</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <MenuItem icon={Users2} label="Team"></MenuItem>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <MenuItem icon={Blocks} label="Products"></MenuItem>
-                  </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-        </DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Link href={`/settings/`}>
+              <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
+            </Link>
+          </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
             <MenuItem icon={ArrowLeft} label="Log Out"></MenuItem>

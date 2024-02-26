@@ -8,7 +8,7 @@ import { Separator } from "@radix-ui/react-separator";
 export default function Page() {
 
   return (
-    <div className="p-16">
+    <div>
       <CarouselResults />
       <Suspense fallback={<ResultsSkeleton />}>
         <Results />

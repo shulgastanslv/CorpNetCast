@@ -10,6 +10,8 @@ export const updateUser = async (values: Partial<User>) => {
   const self = await getSelf();
 
   const validData = {
+    username: values.username,
+    imageUrl: values.imageUrl,
     bio: values.bio,
   };
 

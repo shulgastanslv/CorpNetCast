@@ -27,18 +27,6 @@ export const Actions = async () => {
       )}
       {!!user && (
         <div className="flex items-center mr-2">
-          <Hint label="Messages" side="bottom" asChild>
-            <Button
-              size="sm"
-              variant="secondary"
-              className="text-muted-foreground bg-transparent hover:bg-muted hover:text-primary mr-2"
-              asChild
-            >
-             <Link href={`/messages/${user?.username}`}>
-                <LucideMessageCircle className="w-5 h-5" />
-              </Link>
-            </Button>
-          </Hint>
           <Menu></Menu>
         </div>
       )}
