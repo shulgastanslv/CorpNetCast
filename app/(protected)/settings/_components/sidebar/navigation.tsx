@@ -16,7 +16,9 @@ import {
   CircleDollarSignIcon,
   User2,
   AlertCircleIcon,
-  AlertCircle
+  AlertCircle,
+  Palette,
+  Languages
 } from "lucide-react";
 
 import { NavItem, NavItemSkeleton } from "./nav-item";
@@ -36,8 +38,18 @@ export const Navigation = () => {
       icon: User2
     },
     {
+      label: "Appearance",
+      href: `/settings/appearance`,
+      icon: Palette,
+    },
+    {
+      label: "Languages",
+      href: `/settings/languages`,
+      icon: Languages,
+    },
+    {
       label: "Admin Panel",
-      href: `/admin`,
+      href: `/settings/admin`,
       icon: AlertCircle,
     },
   ];

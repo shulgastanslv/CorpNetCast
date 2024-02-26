@@ -23,9 +23,7 @@ const UserPage = async ({
   }
 
   return (
-
     <div>
-
     </div>
   );
 }

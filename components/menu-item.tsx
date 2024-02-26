@@ -16,3 +16,5 @@ const MenuItem = ({icon: Icon, label} : MenuItemProps) => {
 }
  
 export default MenuItem;
+
+

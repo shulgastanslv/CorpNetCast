@@ -19,6 +19,8 @@ import Link from "next/link";
 import { DashboardIcon, DropdownMenuIcon } from "@radix-ui/react-icons";
 import { Clapperboard, BlocksIcon, ClapperboardIcon, Code2Icon, History, NewspaperIcon, SettingsIcon, User, User2, User2Icon, Users2, Blocks, ArrowLeft } from "lucide-react";
 import MenuItem from "./menu-item";
+import { signOut } from "@/auth";
+import LogOutButton from "./logout-button";
 
 export async function Menu() {
 
@@ -71,11 +73,13 @@ export async function Menu() {
           <DropdownMenuItem>
             <Link href={`/settings/`}>
               <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
-            </Link>
+            </Link> 
           </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-            <MenuItem icon={ArrowLeft} label="Log Out"></MenuItem>
+            <LogOutButton>
+              Sign Out
+            </LogOutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

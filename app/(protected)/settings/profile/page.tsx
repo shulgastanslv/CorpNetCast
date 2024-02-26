@@ -1,9 +1,13 @@
+import { ArrowLeftIcon } from "lucide-react";
 import { AvatarCard } from "./_components/avatar-card";
+import { UserInfoCard } from "./_components/user-info-card";
+import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
     return (
-        <div className="px-10 pt-10 w-full">
+        <div className="flex flex-col p-6 w-full gap-4">
             <AvatarCard />
+            <UserInfoCard />
         </div>
     );
 }

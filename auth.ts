@@ -17,11 +17,13 @@ export const {
       if (token.sub && session.user) {
         session.user.id = token.sub;
         session.user.name = token.name;
+        session.user.image = token.picture;
       }
 
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
         session.user.name = token.name;
+        session.user.image = token.picture;
       }
 
       return session;
@@ -34,6 +36,7 @@ export const {
       if (!existingUser) return token;
 
       token.role = existingUser.role;
+      token.picture =  existingUser.imageUrl;
       token.name = existingUser.username;
 
       return token;

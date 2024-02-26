@@ -19,15 +19,6 @@ const KeysPage = async () => {
 
   return (
     <div className="p-6">
-      <div className="flex items-center gap-4 mb-5">
-        <Button size="icon" variant="outline">
-          <ArrowLeftIcon className="h-4 w-4" />
-          <span className="sr-only">Back</span>
-        </Button>
-        <h1 className="text-lg font-semibold md:text-xl">
-          Keys & URLs
-        </h1>
-      </div>
       <div className="space-y-4">
         <UrlCard value={stream.serverUrl} />
         <KeyCard value={stream.streamKey} />
