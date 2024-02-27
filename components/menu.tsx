@@ -37,31 +37,52 @@ export async function Menu() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <Link href={`/${user?.username}`}>
-              <MenuItem icon={User2} label="Profile"></MenuItem>
+              Profile
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={`/news/`}>
-              <MenuItem icon={NewspaperIcon} label="News"></MenuItem>
+              News
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={`/u/${user?.username}`}>
-              <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
+              Dashboard
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Company</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem disabled>Products</DropdownMenuItem>
+                <DropdownMenuItem disabled>Team</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem disabled>More...</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            Items
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>GitHub</DropdownMenuItem>
+        <DropdownMenuItem disabled>Support</DropdownMenuItem>
+        <DropdownMenuItem disabled>API</DropdownMenuItem>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href={`/settings/`}>
-            <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
+            Settings
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOutButton>
-            Sign Out
-          </LogOutButton>
+        <DropdownMenuItem disabled>
+          Log out
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

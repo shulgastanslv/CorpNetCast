@@ -1,6 +1,8 @@
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Logo } from "./logo";
+import { Actions } from "./actions";
 
 export const Navbar = () => {
   return (
