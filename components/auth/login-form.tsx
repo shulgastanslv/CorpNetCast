@@ -67,11 +67,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <CardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Don't have an account?"
-      backButtonHref="/auth/register"
-    >
+    <CardWrapper>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -88,6 +84,7 @@ export const LoginForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
+                      placeholder="Enter your username"
                       type="text"
                     />
                   </FormControl>

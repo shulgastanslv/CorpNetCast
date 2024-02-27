@@ -19,19 +19,16 @@ export const CarouselResults = async () => {
     }
 
     return (
-        <Carousel  opts={{
-            align: "center",
-            loop: true,
-          }} className="ml-10 mr-10">
-            <CarouselContent>
+        <Carousel className="ml-10 mt-10 mr-10">
+            <CarouselContent className="items-center justify-center w-full px-10">
                 {data && data.map((result) => (
                     <CarouselItem key={result.id}>
                         <CarouselResultCard data={result} />
                     </CarouselItem>
                 ))} 
             </CarouselContent>
-            <CarouselPrevious/>
-            <CarouselNext />
+            <CarouselPrevious className="ml-10"/>
+            <CarouselNext className="mr-10"/>
         </Carousel>
     )
 }

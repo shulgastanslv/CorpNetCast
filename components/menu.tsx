@@ -29,14 +29,14 @@ export async function Menu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SelfAvatar size="default" imageUrl={user?.imageUrl!} username={user?.username!}/>
+        <SelfAvatar size="default" imageUrl={user?.imageUrl!} username={user?.username!} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-52">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-          <Link href={`/${user?.username}`}>
+            <Link href={`/${user?.username}`}>
               <MenuItem icon={User2} label="Profile"></MenuItem>
             </Link>
           </DropdownMenuItem>
@@ -47,39 +47,21 @@ export async function Menu() {
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={`/u/${user?.username}`}>
-            <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
+              <MenuItem icon={Clapperboard} label="Dashboard"></MenuItem>
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Language</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Russian</DropdownMenuItem>
-                <DropdownMenuItem>English</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Dark</DropdownMenuItem>
-                <DropdownMenuItem>Light</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
         </DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href={`/settings/`}>
-              <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
-            </Link> 
-          </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-            <LogOutButton>
-              Sign Out
-            </LogOutButton>
+          <Link href={`/settings/`}>
+            <MenuItem icon={SettingsIcon} label="Settings"></MenuItem>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <LogOutButton>
+            Sign Out
+          </LogOutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
