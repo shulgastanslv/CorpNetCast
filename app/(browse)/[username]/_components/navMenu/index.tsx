@@ -21,11 +21,6 @@ export const NavMenu = () => {
             icon: null,
         },
         {
-            name: "Items",
-            href: `${user?.name}/items`,
-            icon: null,
-        },
-        {
             name: "Stream",
             href: `/u/${user?.name}`,
             icon: ArrowUpRight,

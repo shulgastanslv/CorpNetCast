@@ -57,6 +57,7 @@ export async function Menu() {
             <DropdownMenuSubTrigger>Company</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
+                <DropdownMenuItem disabled>About Us</DropdownMenuItem>
                 <DropdownMenuItem disabled>Products</DropdownMenuItem>
                 <DropdownMenuItem disabled>Team</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -64,15 +65,7 @@ export async function Menu() {
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>
-            Items
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem disabled>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href={`/settings/`}>

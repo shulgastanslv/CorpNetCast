@@ -9,7 +9,6 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-
 enum UserRole {
   ADMIN
   USER
@@ -19,8 +18,8 @@ model User {
   id                       String     @id @default(uuid())
   username                 String     @unique
   primary_email_address_id String     @unique
-  password      String?
-  role          UserRole @default(USER)
+  password                 String?
+  role                     UserRole   @default(USER)
   imageUrl                 String     @db.Text
   externalUserId           String     @unique
   bio                      String?    @db.Text
@@ -30,61 +29,60 @@ model User {
   followedBy               Follow[]   @relation("FollowedBy")
   blocking                 Block[]    @relation("Blocking")
   blockedBy                Block[]    @relation("BlockedBy")
-  accounts      Account[]
+  accounts                 Account[]
   stream                   Stream?
   inventory                Inventory?
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
-
 model News {
-  id          String   @id @default(uuid())
-  title       String   @db.Text
-  name        String   @db.Text
-  imageUrl    String   @db.Text
-  description String   @db.Text
-  createdAt   DateTime @default(now())
+  id        String   @id @default(uuid())
+  title     String   @db.Text
+  name      String   @db.Text
+  imageUrl  String   @db.Text
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Item {
-  itemId      String     @id @default(uuid())
-  name        String     @unique
-  description String?    @db.Text
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  Inventory   Inventory?
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  inventory   Inventory @relation(fields: [inventoryId], references: [id])
+  inventoryId String
 }
+
 
 model Inventory {
   id        String   @id @default(uuid())
   userId    String   @unique
-  itemId    String   @unique
   quantity  Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  item      Item     @relation(fields: [itemId], references: [itemId])
-
-  @@index([userId])
-  @@index([itemId])
+  items     Item[]
 }
 
 model Follow {

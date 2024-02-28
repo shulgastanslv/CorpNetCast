@@ -12,6 +12,7 @@ export const getUserByUsername = async (username: string) => {
       bio: true,
       imageUrl: true,
       password: true,
+      createdAt: true,
       stream: {
         select: {
           id: true,
@@ -28,6 +29,18 @@ export const getUserByUsername = async (username: string) => {
           followedBy: true,
         },
       },
+      inventory: {
+        select: {
+          item: {
+            select: {
+              id: true,
+              name: true,
+              imageUrl: true,
+              description: true,
+            }
+          }
+        }
+      }
     },
   });
 
@@ -44,3 +57,14 @@ export const getUserById = async (id: string) => {
 
   return user;
 };
+
+
+export const getAllUsers = async () => {
+  try {
+      const users = await db.user.findMany(); 
+      return users;
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error;
+    }
+}

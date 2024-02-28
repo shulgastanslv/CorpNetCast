@@ -1,6 +1,6 @@
 import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
 import { Button } from "@/components/ui/button";
-
+import { VerifiedMark } from "@/components/verified-mark";
 
 interface HeaderProps {
   username: string;
@@ -13,7 +13,7 @@ export const Header = ({
   bio,
   imageUrl,
 }: HeaderProps) => {
-  
+
   return (
     <div className="flex items-start justify-between">
       <div className="flex items-center gap-x-3">
@@ -25,17 +25,15 @@ export const Header = ({
           showBadge
         />
         <div className="space-y-1">
-          <div className="flex items-center gap-x-2">
-            <h2 className="text-lg font-semibold">
-              {username}
-            </h2>
+          <div className="flex items-center gap-x-2 font-semibold text-lg">
+            {username}
+            <VerifiedMark />
           </div>
           <p className="text-sm font-semibold">
             {bio}
           </p>
         </div>
-        </div>
-        <Button size="sm" variant="default">Edit Profile</Button>
+      </div>
     </div>
   );
 };

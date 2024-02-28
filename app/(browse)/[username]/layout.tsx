@@ -9,9 +9,7 @@ import { Header } from "./_components/header";
 
 
 interface UserLayoutProps {
-  params: {
-    username: string;
-  };
+  username: string;
 };
 
 export default async function UserLayout({
@@ -22,7 +20,7 @@ export default async function UserLayout({
   params: UserLayoutProps,
 }) {
 
-  const user = await getUserByUsername(params?.username!);
+  const user = await getUserByUsername(params.username);
 
   if (!user || !user.stream) {
     notFound();
@@ -30,10 +28,10 @@ export default async function UserLayout({
 
   return (
       <div>
+        <UserBanner imageUrl={user?.imageUrl!} />
         <div className="flex flex-col h-screen">
-          <UserBanner imageUrl={user?.imageUrl!} />
           <div className="pt-5 px-5">
-            <Header username={user?.username} bio={user?.bio} imageUrl={user?.imageUrl!}/>
+            <Header username={user?.username!} bio={user?.bio!} imageUrl={user?.imageUrl!}/>
             <NavMenu />
             <div className="pt-5">
               {children}

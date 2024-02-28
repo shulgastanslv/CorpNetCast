@@ -31,6 +31,8 @@ export const Navigation = () => {
 
   const user = useCurrentUser();
 
+  const isAdmin = user?.role === "ADMIN";
+
   const routes = [
     {
       label: "Profile Settings",
@@ -47,11 +49,15 @@ export const Navigation = () => {
       href: `/settings/languages`,
       icon: Languages,
     },
-    {
-      label: "Admin Panel",
-      href: `/settings/admin`,
-      icon: AlertCircle,
-    },
+      ...(isAdmin
+      ? [
+          {
+            label: "Admin Panel",
+            href: `/settings/admin`,
+            icon: AlertCircle,
+          },
+        ]
+      : []),
   ];
 
   if (!user?.id) {
@@ -67,6 +73,8 @@ export const Navigation = () => {
   return (
     <ul className="space-y-2 px-2 pt-4 lg:pt-0">
      {routes.map((route) => (
+
+      
         <NavItem
           key={route.href}
           label={route.label}
