@@ -19,8 +19,8 @@ export const CarouselResults = async () => {
     }
 
     return (
-        <Carousel className="ml-10 mt-10 mr-10">
-            <CarouselContent className="items-center justify-center w-full px-10">
+        <Carousel className="w-1/3 mx-auto">
+            <CarouselContent>
                 {data && data.map((result) => (
                     <CarouselItem key={result.id}>
                         <CarouselResultCard data={result} />

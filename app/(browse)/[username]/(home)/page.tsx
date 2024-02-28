@@ -3,10 +3,16 @@ import { getUserByUsername } from "@/lib/user-service";
 import { isFollowingUser } from "@/lib/follow-service";
 import { isBlockedByUser } from "@/lib/block-service";
 import { UserBanner } from "../_components/banner";
-import {NavMenu} from "../_components/navMenu";
+import { NavMenu } from "../_components/navMenu";
 import { Header } from "../_components/header";
 import { addItemToInventory, getInventoryByUserId } from "@/lib/inventory-service";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import ItemCard from "./_components/item-card";
+import { Suspense } from "react";
+import { Results, ResultsSkeleton } from "../../(home)/_components/results";
 
 
 interface UserPageProps {
@@ -22,38 +28,24 @@ const UserPage = async ({
 
   const userInventory = await getInventoryByUserId(user?.id!);
 
-  // const newItemData = {
-  //   name: "New Item",
-  //   description: "This is a new item",
-  //   imageUrl: "https://example.com/item-image.jpg",
-  // };
-
-  // const updatedItems = await addItemToInventory(user?.id!, newItemData);
-  // console.log("Item added successfully:", updatedItems);
-
-
   if (!user || !user.stream) {
     notFound();
   }
 
   return (
     <div>
+      <div>
+        <Suspense fallback={<ResultsSkeleton />}>
+          <Results />
+        </Suspense>
+      </div>
       <div className="flex items-center gap-x-2 font-semibold text-lg lg:text-xl mb-4">
         {user.username}`s Inventory
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {userInventory?.item.map((item) => (
+        {userInventory?.items.map((item) => (
           <li key={item.id}>
-            <div>
-              <Image className="rounded-sm shadow-sm" 
-              src={item.imageUrl} 
-              objectFit="cover" 
-              alt={item.name} width={250} height={300}/>
-            </div>
-            <div className="py-4">
-              <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
-              <p>{item.description}</p>
-            </div>
+             <ItemCard item={item} />
           </li>
         ))}
       </ul>

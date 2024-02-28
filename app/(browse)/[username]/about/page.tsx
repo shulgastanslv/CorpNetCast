@@ -4,9 +4,15 @@ import { useViewerToken } from "@/hooks/use-viewer-token";
 import { getSelfByUsername } from "@/lib/auth-service";
 import { getUserById, getUserByUsername } from "@/lib/user-service";
 
-const AboutPage = async () => {
+interface AboutPageProps {
+    params : {
+        username : string
+    };
+}
 
-    const user = await getUserByUsername("root");
+const AboutPage = async ({params} : AboutPageProps) => {
+
+    const user = await getUserByUsername(params.username);
     
     return (
         <div className="flex flex-col">

@@ -20,7 +20,7 @@ export const CarouselResultCard = ({
 }: ResultCardProps) => {
   return (
     <Link href={`/${data.user.username}`}>
-      <div className="h-full items-center justify-center w-96 mb-10">
+      <div className="h-full items-center justify-center w-full p-10">
         <Thumbnail
           src={data.thumbnailUrl}
           fallback={data.user.imageUrl}

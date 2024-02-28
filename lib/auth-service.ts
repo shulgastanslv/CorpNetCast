@@ -17,11 +17,13 @@ export const currentRole = async () => {
 import { db } from "@/lib/db";
 import { error } from "console";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+
 
 export const getSelf = async () => {
   const self = await currentUser();
 
-  if (!self?.id) {
+ if (!self?.id) {
     return;
   }
 
@@ -30,21 +32,19 @@ export const getSelf = async () => {
   });
 
   if (!user) {
-    throw new Error("Not found");
+    return;
   }
 
   return user;
 };
 
 export const getSelfByUsername = async (username: string) => {
-
   const user = await db.user.findUnique({
     where: { username }
   });
 
-
   if (!user?.id) {
-    throw new Error("User not found");
+    return;
   }
 
   return user;

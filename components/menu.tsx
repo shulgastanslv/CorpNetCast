@@ -20,7 +20,7 @@ import { DashboardIcon, DropdownMenuIcon } from "@radix-ui/react-icons";
 import { Clapperboard, BlocksIcon, ClapperboardIcon, Code2Icon, History, NewspaperIcon, SettingsIcon, User, User2, User2Icon, Users2, Blocks, ArrowLeft } from "lucide-react";
 import MenuItem from "./menu-item";
 import { signOut } from "@/auth";
-import LogOutButton from "./logout-button";
+import LogOutButton, { LogoutButton } from "./logout-button";
 
 export async function Menu() {
 
@@ -73,9 +73,10 @@ export async function Menu() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        <DropdownMenuItem>
+          <LogoutButton>
+            Log out
+          </LogoutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

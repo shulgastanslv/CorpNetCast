@@ -31,7 +31,7 @@ export const getUserByUsername = async (username: string) => {
       },
       inventory: {
         select: {
-          item: {
+          items: {
             select: {
               id: true,
               name: true,

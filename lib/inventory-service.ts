@@ -28,18 +28,18 @@ export const addItemToInventory = async (userId: string, itemData: {
         userId,
       },
       data: {
-        item: {
+        items: {
           create: {
             ...itemData,
           },
         },
       },
       include: {
-        item: true, // To fetch the updated list of items
+        items: true, // To fetch the updated list of items
       },
     });
   
-    return updatedInventory.item;
+    return updatedInventory.items;
   };
 
   export const getInventoryByUserId = async(userId: string) => {
@@ -48,7 +48,7 @@ export const addItemToInventory = async (userId: string, itemData: {
         userId,
       },
       include: {
-        item: {
+        items: {
           select: {
             id: true,
             name: true,
