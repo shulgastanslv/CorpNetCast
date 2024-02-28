@@ -40,7 +40,7 @@ export async function Menu() {
               Profile
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem disabled>
             <Link href={`/news/`}>
               News
             </Link>
