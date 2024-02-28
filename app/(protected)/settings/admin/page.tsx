@@ -2,13 +2,14 @@ import { Button } from '@/components/ui/button';
 import { getAllUsers } from '@/lib/user-service';
 import { ArrowLeftIcon, CalendarClockIcon, Link } from 'lucide-react';
 import { format } from "util";
-import { columns } from './_components/columns';
-import { DataTable } from './_components/data-table';
+import { columnsUsersDt } from './_components/columns-users-dt';
+import { UsersDataTable } from './_components/users-data-table';
 
 const AdminPage = async () => {
+  
   const users = await getAllUsers();
 
-  const formattedData = users.map((user) => ({
+  const formattedDataUsers = users.map((user) => ({
     ...user,
     userId: user.id,
     imageUrl: user.imageUrl,
@@ -17,10 +18,10 @@ const AdminPage = async () => {
   }));
 
   return ( 
-    <div className="p-6">
-      <DataTable columns={columns} data={formattedData} />
+    <div className="flex flex-col p-6 w-full">
+      <UsersDataTable columns={columnsUsersDt} data={formattedDataUsers} />
     </div>
-   );
+   ); 
 }
  
 export default AdminPage;

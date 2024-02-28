@@ -15,7 +15,7 @@ export type UserInfo = {
   createdAt: string;
 }
 
-export const columns: ColumnDef<UserInfo>[] = [
+export const columnsUsersDt: ColumnDef<UserInfo>[] = [
   {
     accessorKey: "username",
     header: ({ column }) => (
