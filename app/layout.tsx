@@ -26,7 +26,6 @@ export default async function RootLayout({
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
-            forcedTheme="dark"
             storageKey="my-theme"
           >
             <Toaster theme="dark" position='bottom-center' />

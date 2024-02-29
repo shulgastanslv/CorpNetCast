@@ -59,13 +59,20 @@ export const AvatarCard = ({
 
   return (
     <Card>
+      <CardHeader>
+        <CardTitle className="text-base">Avatar URL</CardTitle>
+      </CardHeader>
       <CardContent className="flex flex-col space-y-4 p-6">
-        <div className="space-y-4">
-          <div className="flex items-center space-x-4">
-            <Avatar className="w-12 h-12">
-              <AvatarImage alt="Your avatar" src={user?.image!} />
-              <AvatarFallback>{user?.name}</AvatarFallback>
-            </Avatar>
+        <div className="space-y-4 w-1/2">
+          <Input id="url"
+            onChange={(e) => setImageUrl(e.target.value)}
+            value={imageUrl}
+            disabled={isPending}
+            placeholder="Paste URL" />
+        </div>
+        <FormError message={error} />
+        <div className="flex items-end justify-center">
+          <div className="flex items-start space-x-4">
             <div className="space-x-2">
               <Button size="sm" variant="outline"
                 onClick={delete_avatar_handle}>
@@ -74,22 +81,11 @@ export const AvatarCard = ({
               </Button>
             </div>
           </div>
+          <Button disabled={isPending}
+            onClick={save_handle}
+            type="submit" size="sm" variant="default"
+            className="ml-auto">Save</Button>
         </div>
-        <div className="space-y-4 w-1/2">
-          <Label htmlFor="url">Avatar URL</Label>
-          <Input id="url"
-            onChange={(e) => setImageUrl(e.target.value)}
-            value={imageUrl}
-            disabled={isPending}
-            placeholder="Enter URL" />
-        </div>
-        <div className="flex items-end justify-center">
-            <FormError message={error} />
-            <Button disabled={isPending}
-              onClick={save_handle}
-              type="submit" size="sm" variant="default" 
-              className="ml-auto">Save</Button>
-          </div>
       </CardContent>
     </Card>
   );

@@ -23,7 +23,7 @@ export const UserInfoCard = ({
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  
+
   const save_handle = () => {
     if (!username || !bio) {
       setError("Username and bio cannot be empty");
@@ -44,28 +44,29 @@ export const UserInfoCard = ({
   }
 
   return (
-      <Card>
-        <CardContent className="flex flex-col space-y-4 p-6 w-full">
-          <div className="space-y-4">
-            <Label htmlFor="username">Username</Label>
-            <Input  onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              disabled={isPending} className="w-1/2" id="username" placeholder="Enter username" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="bio">Bio</Label>
-            <Textarea onChange={(e) => setBio(e.target.value)}
-              value={bio}
-              disabled={isPending} className="min-h-[100px] w-1/2" id="bio" placeholder="Enter bio" />
-          </div>
-          <div className="flex items-end justify-center">
-            <FormError message={error} />
-            <Button disabled={isPending}
-              onClick={save_handle}
-              type="submit" size="sm" variant="default" 
-              className="ml-auto">Save</Button>
-          </div>
-        </CardContent>
-      </Card >
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-base">User Settings</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col space-y-4 p-6 w-full">
+        <div className="space-y-2">
+          <Input onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            disabled={isPending} className="w-1/2" id="username" placeholder="Enter new username" />
+        </div>
+        <div className="space-y-2">
+          <Textarea onChange={(e) => setBio(e.target.value)}
+            value={bio}
+            disabled={isPending} className="min-h-[100px] w-1/2" id="bio" placeholder="Enter new bio" />
+        </div>
+        <div className="flex items-end justify-center">
+          <FormError message={error} />
+          <Button disabled={isPending}
+            onClick={save_handle}
+            type="submit" size="sm" variant="default"
+            className="ml-auto">Save</Button>
+        </div>
+      </CardContent>
+    </Card >
   );
 };

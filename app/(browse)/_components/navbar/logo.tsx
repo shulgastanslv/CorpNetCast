@@ -13,7 +13,7 @@ export const Logo = () => {
   return (
     <Link href="/">
       <div className="flex items-center marker:hover:opacity-75 transition">
-        <div className="color-fill-white rounded-full p-1 mr-12 shrink-0 lg:mr-0 lg:shrink">
+        <div className="rounded-full p-1 mr-12 shrink-0 lg:mr-0 lg:shrink">
           <Image
             src="/logo.svg"
             alt="CorpNetCast"

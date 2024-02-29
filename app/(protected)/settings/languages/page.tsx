@@ -1,9 +1,10 @@
-import ThemeToggle from "@/components/theme-toggle";
+import LanguagesCard from "./_components/languages-card";
+
 
 const LanguagesPage = () => {
     return (
-    <div>
-        <ThemeToggle/>
+    <div className="flex flex-col p-5 space-y-4">
+        <LanguagesCard/>
     </div>
     );
 }
