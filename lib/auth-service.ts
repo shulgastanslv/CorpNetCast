@@ -14,13 +14,21 @@ export const currentRole = async () => {
     return session?.user?.role;
 };
 
-
+//@ts-ignore
 export const getSelf = async () => {
     const self = await currentUser();
 
+    if(self?.id || self?.id == undefined) {
+        return null;
+    }
+
     const user = await db.user.findUnique({
-        where: { externalUserId: self?.id },
+        where: { externalUserId: self.id },
     });
+
+    if(!user) {
+        return null;
+    }
 
     return user;
 };

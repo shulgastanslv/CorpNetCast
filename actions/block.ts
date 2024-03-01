@@ -15,6 +15,10 @@ const roomService = new RoomServiceClient(
 export const onBlock = async (id: string) => {
     const self = await getSelf();
 
+    if(!self?.id) {
+        return;
+    }
+
     let blockedUser;
 
     try {
@@ -25,6 +29,7 @@ export const onBlock = async (id: string) => {
     try {
         await roomService.removeParticipant(self?.id!, id);
     } catch {
+
     }
 
     revalidatePath(`/u/${self?.username!}/community`);
@@ -34,6 +39,11 @@ export const onBlock = async (id: string) => {
 
 export const onUnblock = async (id: string) => {
     const self = await getSelf();
+
+    if(!self?.id) {
+        return;
+    }
+
     const unblockedUser = await unblockUser(id);
 
     revalidatePath(`/u/${self?.username!}/community`);
