@@ -1,11 +1,20 @@
-import NextAuth from "next-auth";
+import NextAuth, { Session } from "next-auth";
 
 import authConfig from "@/auth.config";
 import {apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes,} from "@/routes";
+import { GetServerSidePropsContext } from "next";
+import { NextRequest } from "next/server";
+
+type AuthRequest = {
+  nextUrl: URL;
+  auth?: Session; // Assuming Session is the type of your authentication session
+};
+
 
 const {auth} = NextAuth(authConfig);
 
-export default auth((req : NextAuthRequest) => {
+//@ts-ignore
+export default auth((req : any) => {
     const {nextUrl} = req;
     const isLoggedIn = !!req.auth;
 
