@@ -5,13 +5,43 @@ import { useTheme } from 'next-themes';
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "@/components/ui/select"
+import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 
-export default function ThemeCard() {
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { toast } from 'sonner';
+
+const ThemeSchema = z.object({
+  theme: z
+    .string({
+      required_error: "error ",
+    })
+})
+
+export default function ThemeForm() {
+
   const { theme, setTheme } = useTheme();
-
   const storedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('my-theme') : null;
-  const [toggleText, setToggleText] = useState(theme === 'dark' ? 'Light Theme' : 'Dark Theme');
+
+  const form = useForm<z.infer<typeof ThemeSchema>>({
+    resolver: zodResolver(ThemeSchema),
+  })
 
   useEffect(() => {
     const setThemeClass = () => {
@@ -29,44 +59,71 @@ export default function ThemeCard() {
     console.log(`${storedTheme} selected`);
   }, [storedTheme]);
 
-  const setLightTheme = () => {
-    setTheme('light');
-    window.localStorage.setItem('my-theme', 'light');
-  }
 
-  const setDarkTheme = () => {
-    setTheme('dark');
-    window.localStorage.setItem('my-theme', 'dark');
-  }
+  function onSubmit(data: z.infer<typeof ThemeSchema>) {
+    
+    if(theme == data.theme){
+      return;
+    }
 
-  const toggleTheme = () => {
-    if (theme === 'light') {
+    setTheme(data.theme);
+
+    if(theme == 'light'){
       setTheme('dark');
       window.localStorage.setItem('my-theme', 'dark');
-      setToggleText('Light Theme');
-    } else {
+    }
+    else
+    {
       setTheme('light');
       window.localStorage.setItem('my-theme', 'light');
-      setToggleText('Dark Theme');
     }
-  };
+  }
 
   return (
-    <Card>
-       <CardHeader>
-            <CardTitle className="text-base">Customize</CardTitle>
-        </CardHeader>
-      <CardContent className="flex items-center justify-center">
-      <Select aria-labelledby="theme">
-          <SelectTrigger>
-            <SelectValue placeholder="Theme" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light" onClick={setLightTheme}>Light</SelectItem>
-            <SelectItem value="dark" onClick={setDarkTheme}>Dark</SelectItem>
-          </SelectContent>
-        </Select>
-      </CardContent>
-    </Card>
+
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+        <FormField
+          control={form.control}
+          name="theme"
+          render={({ field }) => (
+            <FormItem>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select theme" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="light">Light</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button size="sm" variant="default" type="submit">Save</Button>
+      </form>
+    </Form>
+
+    // <Card>
+    //    <CardHeader>
+    //         <CardTitle className="text-base">Customize</CardTitle>
+    //     </CardHeader>
+    //   <CardContent className="flex items-center justify-center">
+    //   <Select aria-labelledby="theme">
+    //       <SelectTrigger>
+    //         <SelectValue placeholder="Theme" />
+    //       </SelectTrigger>
+    //       <SelectContent>
+    //         <SelectItem value="light" on={setLightTheme}>Light</SelectItem>
+    //         <SelectItem value="dark" onClick={setDarkTheme}>Dark</SelectItem>
+    //       </SelectContent>
+    //     </Select>
+    //   </CardContent>
+    // </Card>
   );
 }

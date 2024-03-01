@@ -6,8 +6,8 @@ import { Hint } from "@/components/hint";
 import { useState } from "react";
 import { currentUser, getSelf } from "@/lib/auth-service";
 import { LoginButton } from "@/components/auth/login-button";
-import { SelfAvatar } from "@/components/self-avatar";
-import { Menu } from "@/components/menu";
+import { SelfAvatar } from "@/app/(browse)/_components/self-avatar";
+import { Menu } from "@/app/(browse)/_components/menu";
 import { signOut } from "next-auth/react";
 
 export const Actions = async () => {
