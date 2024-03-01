@@ -1,48 +1,48 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import {useRouter} from "next/navigation";
 
 import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
+    Dialog,
+    DialogContent,
+    DialogTrigger,
 } from "@/components/ui/dialog";
-import { LoginForm } from "@/components/auth/login-form";
+import {LoginForm} from "@/components/auth/login-form";
 
 interface LoginButtonProps {
-  children: React.ReactNode;
-  mode?: "modal" | "redirect",
-  asChild?: boolean;
+    children: React.ReactNode;
+    mode?: "modal" | "redirect",
+    asChild?: boolean;
 };
 
 export const LoginButton = ({
-  children,
-  mode = "redirect",
-  asChild
-}: LoginButtonProps) => {
-  const router = useRouter();
+                                children,
+                                mode = "redirect",
+                                asChild
+                            }: LoginButtonProps) => {
+    const router = useRouter();
 
-  const onClick = () => {
-    console.log("auth")
-    router.push("/auth/login");
-  };
+    const onClick = () => {
+        console.log("auth")
+        router.push("/auth/login");
+    };
 
-  if (mode === "modal") {
+    if (mode === "modal") {
+        return (
+            <Dialog>
+                <DialogTrigger asChild={asChild}>
+                    {children}
+                </DialogTrigger>
+                <DialogContent className="p-0 w-auto bg-transparent border-none">
+                    <LoginForm/>
+                </DialogContent>
+            </Dialog>
+        )
+    }
+
     return (
-      <Dialog>
-        <DialogTrigger asChild={asChild}>
-          {children}
-        </DialogTrigger>
-        <DialogContent className="p-0 w-auto bg-transparent border-none">
-          <LoginForm />
-        </DialogContent>
-      </Dialog>
-    )
-  }
-
-  return (
-    <span onClick={onClick} className="cursor-pointer">
+        <span onClick={onClick} className="cursor-pointer">
       {children}
     </span>
-  );
+    );
 };

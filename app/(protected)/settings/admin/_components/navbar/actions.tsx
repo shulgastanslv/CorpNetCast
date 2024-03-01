@@ -1,9 +1,9 @@
-import { Menu } from "../menu";
+import {Menu} from "../menu";
 
 export const Actions = async () => {
-  return (
-    <div className="flex items-end justify-end gap-x-2 ml-4 lg:ml-0">
-      <Menu/>
-    </div>
-  );
+    return (
+        <div className="flex items-end justify-end gap-x-2 ml-4 lg:ml-0">
+            <Menu/>
+        </div>
+    );
 };

@@ -1,20 +1,21 @@
-import { Suspense } from "react";
-import { Container } from "./_components/container";
+import {Suspense} from "react";
+import {Container} from "./_components/container";
 import Navbar from "./_components/navbar";
-import { Sidebar, SidebarSkeleton } from "./_components/sidebar";
+import {Sidebar, SidebarSkeleton} from "./_components/sidebar";
 
 const BrowseLayout = (
-    { children
+    {
+        children
     }: {
         children: React.ReactNode
     }) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="flex h-full pt-16">
-                <Suspense fallback={<SidebarSkeleton />}>
-                    <Sidebar />
+                <Suspense fallback={<SidebarSkeleton/>}>
+                    <Sidebar/>
                 </Suspense>
                 <Container>
                     {children}

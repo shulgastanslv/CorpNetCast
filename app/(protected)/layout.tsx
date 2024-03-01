@@ -1,13 +1,13 @@
-const ProtectedLayout = ({ 
-    children
-  }: { 
+const ProtectedLayout = ({
+                             children
+                         }: {
     children: React.ReactNode
-  }) => {
-    return ( 
-      <div className="h-full flex">
-        {children}
-      </div>
-     );
-  }
-   
-  export default ProtectedLayout;
+}) => {
+    return (
+        <div className="h-full flex">
+            {children}
+        </div>
+    );
+}
+
+export default ProtectedLayout;

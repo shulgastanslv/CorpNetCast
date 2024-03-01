@@ -1,14 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { getNews } from "@/lib/news-service";
-import { useEffect, useState } from "react";
+import {getNews} from "@/lib/news-service";
 
 const NewsPage = async () => {
 
-  const news = await getNews();
+    const news = await getNews();
 
-  return (
-    <div>News</div>
-  );
+    return (
+        <div>News</div>
+    );
 }
 
 export default NewsPage;

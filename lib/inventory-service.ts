@@ -1,63 +1,63 @@
-import { db } from "@/lib/db";
+import {db} from "@/lib/db";
 
 export const addItemToInventory = async (userId: string, itemData: {
     name: string;
     description?: string;
     imageUrl: string;
-  }) => {
+}) => {
     // Find the inventory by userId
     let inventory = await db.inventory.findUnique({
-      where: {
-        userId,
-      },
+        where: {
+            userId,
+        },
     });
-  
+
     // If the inventory doesn't exist, you might want to handle this case accordingly
     if (!inventory) {
         inventory = await db.inventory.create({
-          data: {
-            userId,
-            quantity: 0,
-          },
+            data: {
+                userId,
+                quantity: 0,
+            },
         });
-      }
-  
+    }
+
     // Use Prisma's update method to add a new item to the inventory
     const updatedInventory = await db.inventory.update({
-      where: {
-        userId,
-      },
-      data: {
-        items: {
-          create: {
-            ...itemData,
-          },
+        where: {
+            userId,
         },
-      },
-      include: {
-        items: true, // To fetch the updated list of items
-      },
+        data: {
+            items: {
+                create: {
+                    ...itemData,
+                },
+            },
+        },
+        include: {
+            items: true, // To fetch the updated list of items
+        },
     });
-  
-    return updatedInventory.items;
-  };
 
-  export const getInventoryByUserId = async(userId: string) => {
+    return updatedInventory.items;
+};
+
+export const getInventoryByUserId = async (userId: string) => {
     const inventory = await db.inventory.findUnique({
-      where: {
-        userId,
-      },
-      include: {
-        items: {
-          select: {
-            id: true,
-            name: true,
-            imageUrl: true,
-            description: true,
-          },
+        where: {
+            userId,
         },
-      },
+        include: {
+            items: {
+                select: {
+                    id: true,
+                    name: true,
+                    imageUrl: true,
+                    description: true,
+                },
+            },
+        },
     });
-  
+
     return inventory;
-  }
+}

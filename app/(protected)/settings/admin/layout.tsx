@@ -1,14 +1,15 @@
 import Navbar from "./_components/navbar";
 
 const AdminLayout = (
-    { children
+    {
+        children
     }: {
         children: React.ReactNode
     }) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="flex h-full w-full pt-16 z-50">
                 {children}
             </div>

@@ -1,23 +1,22 @@
 "use client"
-import { BioModal } from "@/components/stream-player/bio-modal";
-import { VerifiedMark } from "@/components/verified-mark";
-import { useViewerToken } from "@/hooks/use-viewer-token";
+import {BioModal} from "@/components/stream-player/bio-modal";
+import {useViewerToken} from "@/hooks/use-viewer-token";
 
 interface AboutCardProps {
     hostName: string;
     hostIdentity: string;
     bio: string | null;
-    createdAt : Date,
+    createdAt: Date,
     followedByCount: number;
 };
 
 export const AboutCard = ({
-    hostName,
-    hostIdentity,
-    bio,
-    createdAt,
-    followedByCount,
-}: AboutCardProps) => {
+                              hostName,
+                              hostIdentity,
+                              bio,
+                              createdAt,
+                              followedByCount,
+                          }: AboutCardProps) => {
     const hostAsViewer = `host-${hostIdentity}`;
 
     const {
@@ -38,7 +37,7 @@ export const AboutCard = ({
                         About {hostName}
                     </div>
                     {isHost && (
-                        <BioModal initialValue={bio} />
+                        <BioModal initialValue={bio}/>
                     )}
                 </div>
                 <div className="text-sm text-muted-foreground">

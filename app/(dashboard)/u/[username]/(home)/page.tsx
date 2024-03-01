@@ -1,33 +1,32 @@
-import { getUserByUsername } from "@/lib/user-service";
-import { StreamPlayer } from "@/components/stream-player";
-import { isBlockedByUser } from "@/lib/block-service";
-import { currentUser } from "@/lib/auth-service";
+import {getUserByUsername} from "@/lib/user-service";
+import {StreamPlayer} from "@/components/stream-player";
+import {currentUser} from "@/lib/auth-service";
 
 interface CreatorPageProps {
-  params: {
-    username: string;
-  };
+    params: {
+        username: string;
+    };
 };
 
 const CreatorPage = async ({
-  params,
-}: CreatorPageProps) => {
-  const externalUser = await currentUser();
-  const user = await getUserByUsername(params.username);
+                               params,
+                           }: CreatorPageProps) => {
+    const externalUser = await currentUser();
+    const user = await getUserByUsername(params.username);
 
-  if (!user?.id) {
-    throw new Error("Unauthorized");
-  }
+    if (!user?.id) {
+        throw new Error("Unauthorized");
+    }
 
-  return (
-    <div className="h-full">
-      <StreamPlayer
-        user={user}
-        stream={user?.stream}
-        isFollowing
-      />
-    </div>
-  );
+    return (
+        <div className="h-full">
+            <StreamPlayer
+                user={user}
+                stream={user?.stream}
+                isFollowing
+            />
+        </div>
+    );
 }
 
 export default CreatorPage;

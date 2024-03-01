@@ -1,11 +1,11 @@
-import { StreamPlayerSkeleton } from "@/components/stream-player";
+import {StreamPlayerSkeleton} from "@/components/stream-player";
 
 const CreatorLoading = () => {
-  return ( 
-    <div className="h-full">
-      <StreamPlayerSkeleton />
-    </div>
-  );
+    return (
+        <div className="h-full">
+            <StreamPlayerSkeleton/>
+        </div>
+    );
 }
 
 export default CreatorLoading;

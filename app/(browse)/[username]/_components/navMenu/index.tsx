@@ -1,15 +1,15 @@
 "use client"
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { cn } from "@/lib/utils";
-import { useCurrentUser } from '@/hooks/use-current-user';
+import {Tab} from '@headlessui/react'
+import {cn} from "@/lib/utils";
+import {useCurrentUser} from '@/hooks/use-current-user';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import {ArrowUpRight} from 'lucide-react';
 
 interface NavMenuProps {
     username: string;
 }
 
-export const NavMenu = ({ username }: NavMenuProps) => {
+export const NavMenu = ({username}: NavMenuProps) => {
 
     const isHost = useCurrentUser()?.name == username ? true : false;
 
@@ -43,7 +43,7 @@ export const NavMenu = ({ username }: NavMenuProps) => {
                         <Link key={i.name} href={i.href}>
                             <Tab
                                 key={i.name}
-                                className={({ selected }) =>
+                                className={({selected}) =>
                                     cn(
                                         selected ? 'border-current text-current' : 'border-transparent text-gray-400',
                                         'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
@@ -53,7 +53,7 @@ export const NavMenu = ({ username }: NavMenuProps) => {
                                     <span>{i.name}</span>
                                     {i.icon && (
                                         <span className="ml-2">
-                                            <i.icon />
+                                            <i.icon/>
                                         </span>
                                     )}
                                 </div>
