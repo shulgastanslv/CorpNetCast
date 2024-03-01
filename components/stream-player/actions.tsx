@@ -1,7 +1,7 @@
 "use client";
 
 import {toast} from "sonner";
-import {Heart, MinusCircle, User} from "lucide-react";
+import {Heart, MinusCircle} from "lucide-react";
 import {useTransition} from "react";
 import {useRouter} from "next/navigation";
 
@@ -10,7 +10,6 @@ import {Button} from "@/components/ui/button";
 import {Skeleton} from "@/components/ui/skeleton";
 import {onFollow, onUnfollow} from "@/actions/follow";
 import {onBlock, onUnblock} from "@/actions/block";
-import {getUserById} from "@/lib/user-service";
 import {useCurrentUser} from "@/hooks/use-current-user";
 
 interface ActionsProps {

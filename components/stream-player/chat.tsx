@@ -1,13 +1,8 @@
 "use client";
 
 import {useEffect, useMemo, useState} from "react";
-import {ConnectionState} from "livekit-client";
 import {useMediaQuery} from "usehooks-ts";
-import {
-    useChat,
-    useConnectionState,
-    useRemoteParticipant
-} from "@livekit/components-react";
+import {useChat, useConnectionState, useRemoteParticipant} from "@livekit/components-react";
 
 import {ChatVariant, useChatSidebar} from "@/store/use-chat-sidebar";
 

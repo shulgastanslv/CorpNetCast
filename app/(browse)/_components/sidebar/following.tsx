@@ -1,6 +1,7 @@
 "use client";
 
-import {Follow, User} from "@prisma/client";
+import {Follow} from "@prisma/client";
+import {User} from "@prisma/client";
 
 import {useSidebar} from "@/store/use-sidebar";
 

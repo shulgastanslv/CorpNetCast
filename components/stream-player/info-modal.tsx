@@ -1,19 +1,12 @@
 "use client";
 
 import {toast} from "sonner";
-import {useState, useTransition, useRef, ElementRef} from "react";
+import {ElementRef, useRef, useState, useTransition} from "react";
 import {useRouter} from "next/navigation";
 import {Trash} from "lucide-react";
 import Image from "next/image";
 
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+import {Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog";
 import {Hint} from "@/components/hint";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";

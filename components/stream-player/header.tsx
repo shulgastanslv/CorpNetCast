@@ -1,10 +1,7 @@
 "use client";
 
 import {UserIcon} from "lucide-react";
-import {
-    useParticipants,
-    useRemoteParticipant
-} from "@livekit/components-react";
+import {useParticipants, useRemoteParticipant} from "@livekit/components-react";
 
 import {Skeleton} from "@/components/ui/skeleton";
 import {VerifiedMark} from "@/components/verified-mark";

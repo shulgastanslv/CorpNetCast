@@ -1,12 +1,12 @@
 "use server";
 
 import {
+    type CreateIngressOptions,
     IngressAudioEncodingPreset,
-    IngressInput,
     IngressClient,
+    IngressInput,
     IngressVideoEncodingPreset,
     RoomServiceClient,
-    type CreateIngressOptions,
 } from "livekit-server-sdk";
 
 import {TrackSource} from "livekit-server-sdk/dist/proto/livekit_models";
@@ -45,13 +45,13 @@ export const createIngress = async (ingressType: IngressInput) => {
 
     const self = await getSelf();
 
-    await resetIngresses(self.id);
+    await resetIngresses(self?.id!);
 
     const options: CreateIngressOptions = {
-        name: self.username,
-        roomName: self.id,
-        participantName: self.username,
-        participantIdentity: self.id,
+        name: self?.username!,
+        roomName: self?.id!,
+        participantName: self?.username!,
+        participantIdentity: self?.id!,
     };
 
     if (ingressType === IngressInput.WHIP_INPUT) {
@@ -82,7 +82,7 @@ export const createIngress = async (ingressType: IngressInput) => {
         }
 
         await db.stream.update({
-            where: {userId: self.id},
+            where: {userId: self?.id!},
             data: {
                 ingressId: ingress.ingressId,
                 serverUrl: ingress.url,
@@ -90,12 +90,10 @@ export const createIngress = async (ingressType: IngressInput) => {
             },
         });
 
-        revalidatePath(`/u/${self.username}/keys`);
+        revalidatePath(`/u/${self?.username!}/keys`);
         return ingress;
     } catch (error) {
         console.error("Error creating ingress:", error);
         throw new Error("Failed to create ingress");
     }
-
-
 };

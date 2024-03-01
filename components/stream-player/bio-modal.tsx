@@ -1,16 +1,9 @@
 "use client";
 
 import {toast} from "sonner";
-import {useState, useTransition, useRef, ElementRef} from "react";
+import {ElementRef, useRef, useState, useTransition} from "react";
 
-import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+import {Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog";
 import {updateUser} from "@/actions/user";
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";

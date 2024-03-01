@@ -30,14 +30,14 @@ export const createViewerToken = async (hostIdentity: string) => {
         throw new Error("User is blocked");
     }
 
-    const isHost = self.id === host.id;
+    const isHost = self?.id === host.id;
 
     const token = new AccessToken(
         process.env.LIVEKIT_API_KEY!,
         process.env.LIVEKIT_API_SECRET!,
         {
-            identity: isHost ? `host-${self.id}` : self.id,
-            name: self.username,
+            identity: isHost ? `host-${self?.id}` : self?.id,
+            name: self?.username,
         }
     );
 

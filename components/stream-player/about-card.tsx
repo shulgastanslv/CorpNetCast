@@ -3,7 +3,6 @@
 import {VerifiedMark} from "@/components/verified-mark";
 
 import {BioModal} from "./bio-modal";
-import {Button} from "../ui/button";
 
 interface AboutCardProps {
     hostName: string;

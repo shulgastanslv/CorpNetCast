@@ -1,4 +1,5 @@
 import {auth} from "@/auth";
+import {db} from "@/lib/db";
 
 export const currentUser = async () => {
     const session = await auth();
@@ -14,27 +15,26 @@ export const currentRole = async () => {
 };
 
 
-import {db} from "@/lib/db";
-import {revalidatePath} from "next/cache";
-import {cookies} from "next/headers";
-
-
 export const getSelf = async () => {
-    const self = await currentUser();
+    try {
+        const self = await currentUser();
 
-    if (!self?.id) {
-        return;
+        if (!self?.id) {
+            throw new Error("User ID not found");
+        }
+
+        const user = await db.user.findUnique({
+            where: {externalUserId: self.id},
+        });
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        return user;
+    } catch (error: any) {
+        throw new Error(`Failed to get self: ${error.message}`);
     }
-
-    const user = await db.user.findUnique({
-        where: {externalUserId: self?.id},
-    });
-
-    if (!user) {
-        return;
-    }
-
-    return user;
 };
 
 export const getSelfByUsername = async (username: string) => {

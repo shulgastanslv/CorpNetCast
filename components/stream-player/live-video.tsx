@@ -1,6 +1,6 @@
 "use client";
 
-import {useRef, useState, useEffect} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Participant, Track} from "livekit-client";
 import {useTracks} from "@livekit/components-react";
 import {useEventListener} from "usehooks-ts";

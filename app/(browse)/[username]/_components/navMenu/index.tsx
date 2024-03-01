@@ -4,6 +4,7 @@ import {cn} from "@/lib/utils";
 import {useCurrentUser} from '@/hooks/use-current-user';
 import Link from 'next/link';
 import {ArrowUpRight} from 'lucide-react';
+import React from "react";
 
 interface NavMenuProps {
     username: string;

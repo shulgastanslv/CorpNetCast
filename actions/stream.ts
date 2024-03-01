@@ -11,7 +11,7 @@ export const updateStream = async (values: Partial<Stream>) => {
         const self = await getSelf();
         const selfStream = await db.stream.findUnique({
             where: {
-                userId: self.id,
+                userId: self?.id!,
             },
         });
 
@@ -20,11 +20,11 @@ export const updateStream = async (values: Partial<Stream>) => {
         }
 
         const validData = {
-            name: values.name,
-            thumbnailUrl: values.thumbnailUrl,
-            isChatEnabled: values.isChatEnabled,
-            isChatFollowersOnly: values.isChatFollowersOnly,
-            isChatDelayed: values.isChatDelayed,
+            name: values?.name,
+            thumbnailUrl: values?.thumbnailUrl,
+            isChatEnabled: values?.isChatEnabled,
+            isChatFollowersOnly: values?.isChatFollowersOnly,
+            isChatDelayed: values?.isChatDelayed,
         };
 
         const stream = await db.stream.update({
@@ -36,9 +36,9 @@ export const updateStream = async (values: Partial<Stream>) => {
             },
         });
 
-        revalidatePath(`/u/${self.username}/chat`);
-        revalidatePath(`/u/${self.username}`);
-        revalidatePath(`/${self.username}`);
+        revalidatePath(`/u/${self?.username!}/chat`);
+        revalidatePath(`/u/${self?.username!}`);
+        revalidatePath(`/${self?.username!}`);
 
         return stream;
     } catch {

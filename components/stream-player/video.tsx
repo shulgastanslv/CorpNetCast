@@ -1,11 +1,7 @@
 "use client";
 
 import {ConnectionState, Track} from "livekit-client";
-import {
-    useConnectionState,
-    useRemoteParticipant,
-    useTracks,
-} from "@livekit/components-react"
+import {useConnectionState, useRemoteParticipant, useTracks,} from "@livekit/components-react"
 
 import {OfflineVideo} from "./offline-video";
 import {LoadingVideo} from "./loading-video";

@@ -17,11 +17,9 @@ import {register} from "@/actions/register";
 import {useRouter} from "next/navigation";
 
 interface CreateUserModalProps {
-    initialValue: string | null;
 };
 
 export const CreateUserModal = ({
-                                    initialValue,
                                 }: CreateUserModalProps) => {
     const closeRef = useRef<ElementRef<"button">>(null);
 
@@ -40,6 +38,8 @@ export const CreateUserModal = ({
         },
     });
 
+    
+    
     const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
         setError("");
         setSuccess("");

@@ -1,6 +1,6 @@
 import {toast} from "sonner";
 import {useEffect, useState} from "react";
-import {JwtPayload, jwtDecode} from "jwt-decode";
+import {jwtDecode, JwtPayload} from "jwt-decode";
 
 import {createViewerToken} from "@/actions/token";
 

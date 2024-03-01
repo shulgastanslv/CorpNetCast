@@ -1,13 +1,6 @@
 "use client";
 
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader
-} from "@/components/ui/card";
-import {Header} from "./header";
-import {BackButton} from "./back-button";
+import {Card, CardContent} from "@/components/ui/card";
 
 
 interface CardWrapperProps {

@@ -6,7 +6,7 @@ const AdminPage = () => {
     return (
         <div className="h-full flex flex-col space-y-4 w-full items-center justify-center text-muted-foreground">
             <p>
-                You're welcome, this is your admin panel 👋
+                You are welcome, this is your admin panel 👋
             </p>
             <Button variant="secondary" asChild>
                 <Link href="/">
