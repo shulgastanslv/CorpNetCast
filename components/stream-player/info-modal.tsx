@@ -12,7 +12,7 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {updateStream} from "@/actions/stream";
-import {UploadDropzone} from "@/lib/uploadthing";
+// import {UploadDropzone} from "@/lib/uploadthing";
 
 interface InfoModalProps {
     initialName: string;
@@ -84,11 +84,11 @@ export const InfoModal = ({
                             value={name}
                         />
                     </div>
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                         <Label>
                             Thumbnail
-                        </Label>
-                        {thumbnailUrl ? (
+                        </Label> */}
+                        {/* {thumbnailUrl ? (
                             <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
                                 <div className="absolute top-2 right-2 z-[10]">
                                     <Hint label="Remove thumbnail" asChild side="left">
@@ -110,27 +110,27 @@ export const InfoModal = ({
                                 />
                             </div>
                         ) : (
-                            <div className="rounded-xl border outline-dashed outline-muted">
-                                <UploadDropzone
-                                    endpoint="thumbnailUploader"
-                                    appearance={{
-                                        label: {
-                                            color: "#FFFFFF"
-                                        },
-                                        allowedContent: {
-                                            color: "#FFFFFF"
-                                        }
-                                    }}
-                                    onClientUploadComplete={(res) => {
-                                        console.log(res?.[0]?.url)
-                                        setThumbnailUrl(res?.[0]?.url);
-                                        router.refresh();
-                                        closeRef?.current?.click();
-                                    }}
-                                />
-                            </div>
-                        )}
-                    </div>
+                            // <div className="rounded-xl border outline-dashed outline-muted">
+                            //     <UploadDropzone
+                            //         endpoint="thumbnailUploader"
+                            //         appearance={{
+                            //             label: {
+                            //                 color: "#FFFFFF"
+                            //             },
+                            //             allowedContent: {
+                            //                 color: "#FFFFFF"
+                            //             }
+                            //         }}
+                            //         onClientUploadComplete={(res) => {
+                            //             console.log(res?.[0]?.url)
+                            //             setThumbnailUrl(res?.[0]?.url);
+                            //             router.refresh();
+                            //             closeRef?.current?.click();
+                            //         }}
+                            //     />
+                            // </div>
+                        // )}
+                    </div> */}
                     <div className="flex justify-between">
                         <DialogClose ref={closeRef} asChild>
                             <Button type="button" variant="ghost">
