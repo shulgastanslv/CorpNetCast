@@ -1,6 +1,5 @@
 "use client";
 
-import {format} from "date-fns";
 import {ReceivedChatMessage} from "@livekit/components-react";
 
 import {stringToColor} from "@/lib/utils";
@@ -17,7 +16,7 @@ export const ChatMessage = ({
     return (
         <div className="flex gap-2 p-2 rounded-md hover:bg-white/5">
             <p className="text-sm text-current">
-                {format(data.timestamp, "HH:MM")}
+                {/* {format(data.timestamp, "HH:MM")} */}
             </p>
             <div className="flex flex-wrap items-baseline gap-1 grow">
                 <p className="text-sm font-semibold whitespace-nowrap">

@@ -5,12 +5,6 @@ import {apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes,} from "
 import { GetServerSidePropsContext } from "next";
 import { NextRequest } from "next/server";
 
-type AuthRequest = {
-  nextUrl: URL;
-  auth?: Session; // Assuming Session is the type of your authentication session
-};
-
-
 const {auth} = NextAuth(authConfig);
 
 //@ts-ignore
