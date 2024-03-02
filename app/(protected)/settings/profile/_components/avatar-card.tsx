@@ -41,7 +41,7 @@ export const AvatarCard = ({}: UrlCardProps) => {
             return;
         }
         startTransition(() => {
-            updateUser({imageUrl: imageUrl})
+            updateUserImageUrl({imageUrl: imageUrl})
                 .then(() => {
                     toast.success("User avatar was updated");
                     setError("");
