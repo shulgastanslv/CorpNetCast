@@ -27,9 +27,9 @@ export default async function UserLayout({
 
     return (
         <div>
-            <UserBanner imageUrl={user?.imageUrl!}/>
-            <div className="flex flex-col h-screen">
-                <div className="pt-5 px-5">
+            <UserBanner imageUrl={user?.imageUrl!}  username={user?.username!}/>
+            <div className="flex flex-col h-screen z-10">
+                <div className="pt-5 px-5 bg-background">
                     <Header username={user?.username!} bio={user?.bio!} imageUrl={user?.imageUrl!}/>
                     <NavMenu username={user?.username!}/>
                     <div className="pt-5">

@@ -5,7 +5,7 @@ import {Input} from "@/components/ui/input";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {TrashIcon} from "lucide-react";
-import {updateUser} from "@/actions/user";
+import {updateUser, updateUserImageUrl} from "@/actions/user";
 import {toast} from "sonner";
 import {useState, useTransition} from "react";
 import {useCurrentUser} from "@/hooks/use-current-user";
@@ -23,7 +23,7 @@ export const AvatarCard = ({}: UrlCardProps) => {
 
     const delete_avatar_handle = () => {
         startTransition(() => {
-            updateUser({imageUrl: ""})
+            updateUserImageUrl({imageUrl: ""})
                 .then(() => {
                     toast.success("User avatar was deleted");
                     setError("");

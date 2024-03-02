@@ -1,20 +1,21 @@
 "use client";
 
-import {ElementRef, useRef, useState, useTransition} from "react";
+import { ElementRef, useRef, useState, useTransition } from "react";
 
-import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,} from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import * as z from "zod";
-import {useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import {Input} from "@/components/ui/input";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form";
-import {FormError} from "@/components/form-error";
-import {FormSuccess} from "@/components/form-success";
-import {useRouter} from "next/navigation";
-import {updateUser} from "@/actions/user";
-import {RegisterSchema, UpdateSchema} from "@/schemas";
+import { Input } from "@/components/ui/input";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form";
+import { FormError } from "@/components/form-error";
+import { FormSuccess } from "@/components/form-success";
+import { useRouter } from "next/navigation";
+import { updateUser, updateUserByAdmin } from "@/actions/user";
+import { RegisterSchema, UpdateSchema } from "@/schemas";
+import { toast } from "sonner";
 
 
 interface EditUserModalProps {
@@ -28,8 +29,8 @@ interface UpdateUserResult {
 
 
 export const EditUserModal = ({
-                                  userId,
-                              }: EditUserModalProps) => {
+    userId,
+}: EditUserModalProps) => {
 
 
     const closeRef = useRef<ElementRef<"button">>(null);
@@ -53,13 +54,15 @@ export const EditUserModal = ({
         setSuccess("");
 
         startTransition(() => {
-            updateUser(values)
-                .then((data) => {
-                    setError(data?.error);
-                    setSuccess(data?.success);
-                    router.refresh();
+            updateUserByAdmin(values)
+                .then(() => {
+                    toast.success("User settings was updated");
+                    setError("");
+                })
+                .catch(() => {
+                    toast.error("Something went wrong");
+                    setError("Something went wrong");
                 });
-
         });
     };
     return (
@@ -82,7 +85,7 @@ export const EditUserModal = ({
                             <FormField
                                 control={form.control}
                                 name="username"
-                                render={({field}) => (
+                                render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Name</FormLabel>
                                         <FormControl>
@@ -92,14 +95,14 @@ export const EditUserModal = ({
                                                 placeholder="John Doe"
                                             />
                                         </FormControl>
-                                        <FormMessage/>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
                             <FormField
                                 control={form.control}
                                 name="password"
-                                render={({field}) => (
+                                render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
@@ -110,13 +113,13 @@ export const EditUserModal = ({
                                                 type="password"
                                             />
                                         </FormControl>
-                                        <FormMessage/>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
                         </div>
-                        <FormError message={error}/>
-                        <FormSuccess message={success}/>
+                        <FormError message={error} />
+                        <FormSuccess message={success} />
                         <Button
                             disabled={isPending}
                             type="submit"
