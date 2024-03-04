@@ -32,7 +32,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
             externalUserId: id,
             stream: {
                 create: {
-                    name: {username} + '`s stream'
+                    name: username + '`s stream'
                 }
             },
             username,
