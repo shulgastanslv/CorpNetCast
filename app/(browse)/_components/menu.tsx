@@ -34,11 +34,6 @@ export async function Menu() {
                             Profile
                         </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem disabled>
-                        <Link href={`/news/`}>
-                            News
-                        </Link>
-                    </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/u/${user?.username}`}>
                             Dashboard

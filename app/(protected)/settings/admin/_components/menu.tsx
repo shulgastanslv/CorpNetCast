@@ -35,11 +35,6 @@ export async function Menu() {
                             Users
                         </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Link href={`/settings/admin/news/`}>
-                            News
-                        </Link>
-                    </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>
