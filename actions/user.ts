@@ -24,7 +24,6 @@ export const updateUser = async (values: Partial<User>) => {
 };
 
 export const updateUserByAdmin = async (values: Partial<User>) => {
-    const self = await getSelf();
 
     const hashedPassword = await bcrypt.hash(values?.password!, 10);
 
@@ -34,7 +33,7 @@ export const updateUserByAdmin = async (values: Partial<User>) => {
     };
 
     const user = await db.user.update({
-        where: {id: self?.id},
+        where: {id: values?.id},
         data: {...validData}
     });
 

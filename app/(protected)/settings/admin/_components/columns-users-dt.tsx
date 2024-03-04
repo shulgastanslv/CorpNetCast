@@ -6,6 +6,7 @@ import {ColumnDef} from "@tanstack/react-table";
 import {Button} from "@/components/ui/button";
 import {UserAvatar} from "@/components/user-avatar";
 import {EditUserModal} from "./edit-button-dialog";
+import { SendUserModal } from "./send-item-dialog";
 
 
 export type UserInfo = {
@@ -51,7 +52,11 @@ export const columnsUsersDt: ColumnDef<UserInfo>[] = [
         ),
     },
     {
-        id: "actions",
-        cell: ({row}) => <EditUserModal userId={row.original.userId}/>
+        id: "editUser",
+        cell: ({row}) => <EditUserModal userId={row.original.userId}/>,
     },
+    {
+        id: "sendItem",
+        cell: ({row}) => <SendUserModal userId={row.original.userId}/>,
+    }
 ]

@@ -12,56 +12,62 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { useRouter } from "next/navigation";
-import { updateUser, updateUserByAdmin } from "@/actions/user";
-import { RegisterSchema, UpdateSchema } from "@/schemas";
 import { toast } from "sonner";
+import { ItemScheme } from "@/schemas";
+import { POST } from "@/app/api/items/route";
 
 
-interface EditUserModalProps {
+interface SendItemModalProps {
     userId: string;
 };
 
-interface UpdateUserResult {
-    error?: string;
-    success?: string;
-}
-
-
-export const EditUserModal = ({
+export const SendUserModal = ({
     userId,
-}: EditUserModalProps) => {
+}: SendItemModalProps) => {
 
     const closeRef = useRef<ElementRef<"button">>(null);
-
-    const router = useRouter();
 
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
 
-    const form = useForm<z.infer<typeof UpdateSchema>>({
-        resolver: zodResolver(UpdateSchema),
+    const form = useForm<z.infer<typeof ItemScheme>>({
+        resolver: zodResolver(ItemScheme),
         defaultValues: {
-            id: userId,
-            password: "",
-            username: "",
+            name: "",
+            description: "",
+            imageUrl: "",
         },
     });
 
-    const onSubmit = (values: z.infer<typeof UpdateSchema>) => {
-        setError("");
-        setSuccess("");
-
+    const onSubmit = (values: z.infer<typeof ItemScheme>) => {
         startTransition(() => {
-            updateUserByAdmin(values)
-                .then(() => {
-                    toast.success("User settings was updated");
-                    setError("");
+
+            const item = {
+                name: values?.name,
+                description: values?.description,
+                imageUrl:  values?.imageUrl,
+                userId : userId,
+            };
+
+            fetch('/api/items/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(item),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
                 })
-                .catch(() => {
-                    toast.error("Something went wrong");
-                    setError("Something went wrong");
+                .then((data) => {
+                    console.log('API response:', data);
+                })
+                .catch((error) => {
+                    console.error('Error sending API request:', error);
                 });
         });
     };
@@ -69,12 +75,12 @@ export const EditUserModal = ({
         <Dialog>
             <DialogTrigger asChild>
                 <Button variant="link" size="sm" className="ml-auto">
-                    Edit
+                    Send Item
                 </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Edit User data</DialogTitle>
+                    <DialogTitle>Item data</DialogTitle>
                 </DialogHeader>
                 <Form {...form}>
                     <form
@@ -84,15 +90,14 @@ export const EditUserModal = ({
                         <div className="space-y-4">
                             <FormField
                                 control={form.control}
-                                name="username"
+                                name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>name</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
                                                 disabled={isPending}
-                                                placeholder="John Doe"
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -101,16 +106,30 @@ export const EditUserModal = ({
                             />
                             <FormField
                                 control={form.control}
-                                name="password"
+                                name="description"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
+                                        <FormLabel>description</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
                                                 disabled={isPending}
-                                                placeholder="******"
-                                                type="password"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="imageUrl"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>imageUrl</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                disabled={isPending}
                                             />
                                         </FormControl>
                                         <FormMessage />
@@ -125,7 +144,7 @@ export const EditUserModal = ({
                             type="submit"
                             className="w-full"
                         >
-                            Edit
+                            Send
                         </Button>
                     </form>
                 </Form>

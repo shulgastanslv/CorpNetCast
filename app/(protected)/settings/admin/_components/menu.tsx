@@ -36,12 +36,7 @@ export async function Menu() {
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href={`/items/`}>
-                            Items
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem disabled>
-                        <Link href={`/news/`}>
+                        <Link href={`/settings/admin/news/`}>
                             News
                         </Link>
                     </DropdownMenuItem>

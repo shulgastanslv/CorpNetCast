@@ -18,13 +18,9 @@ export const currentRole = async () => {
 export const getSelf = async () => {
     const self = await currentUser();
 
-    console.log(self?.name)
-
     if(!self?.id || self?.id == undefined) {
         return null;
     }
-
-    console.log(self?.name)
 
     const user = await db.user.findUnique({
         where: { externalUserId: self.id },
@@ -34,8 +30,6 @@ export const getSelf = async () => {
     if(!user) {
         return null;
     }
-
-    console.log(user)
 
     return user;
 };

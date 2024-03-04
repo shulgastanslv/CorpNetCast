@@ -5,14 +5,13 @@ export const addItemToInventory = async (userId: string, itemData: {
     description?: string;
     imageUrl: string;
 }) => {
-    // Find the inventory by userId
+
     let inventory = await db.inventory.findUnique({
         where: {
             userId,
         },
     });
 
-    // If the inventory doesn't exist, you might want to handle this case accordingly
     if (!inventory) {
         inventory = await db.inventory.create({
             data: {
@@ -22,7 +21,6 @@ export const addItemToInventory = async (userId: string, itemData: {
         });
     }
 
-    // Use Prisma's update method to add a new item to the inventory
     const updatedInventory = await db.inventory.update({
         where: {
             userId,
@@ -35,7 +33,7 @@ export const addItemToInventory = async (userId: string, itemData: {
             },
         },
         include: {
-            items: true, // To fetch the updated list of items
+            items: true,
         },
     });
 
